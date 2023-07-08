@@ -1,14 +1,14 @@
 import React from 'react'
-import PeliculaDestacada from "./PeliculasDestacada"
-import PeliculasPopulares from "./PeliculasPopulares"
-import StickyNavbar from "../../components/StickyNavbar"
+import SectionDestacada from "./SectionDestacada"
+import SectionPopulares from "./SectionPopulares"
 
 function Home() {
 	return (
 		<main>
-			<PeliculaDestacada />
 
-			<PeliculasPopulares />
+			<SectionDestacada />
+			<SectionPopulares />
+
 		</main>
 	)
 }

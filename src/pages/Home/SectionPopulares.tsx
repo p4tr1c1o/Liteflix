@@ -1,6 +1,6 @@
 import React from 'react'
 
-function PeliculasPopulares() {
+function SectionPopulares() {
 	return (
 		<section>
 			ver:<select>
@@ -16,4 +16,4 @@ function PeliculasPopulares() {
 	)
 }
 
-export default PeliculasPopulares
+export default SectionPopulares
