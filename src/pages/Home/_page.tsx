@@ -6,8 +6,6 @@ import StickyNavbar from "../../components/StickyNavbar"
 function Home() {
 	return (
 		<main>
-			<StickyNavbar />
-
 			<PeliculaDestacada />
 
 			<PeliculasPopulares />
