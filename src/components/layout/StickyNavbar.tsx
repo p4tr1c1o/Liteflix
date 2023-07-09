@@ -15,6 +15,7 @@ function StickyNavbar() {
 }
 
 const Navbar = styled.nav`
+	position: sticky;
 	display: flex;
 	align-items:center;
 	justify-content: space-between;

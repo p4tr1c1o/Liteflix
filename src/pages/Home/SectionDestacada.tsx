@@ -33,7 +33,7 @@ const TituloPelicula = styled.h1`
 	text-transform: uppercase;
 `
 
-const SubtituloPelicula = styled.h6`
+const SubtituloPelicula = styled.h5`
 	color: ${({ theme }) => theme.colors.white};
 	text-align: center;
 	font-size: 1.25rem;

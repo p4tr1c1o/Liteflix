@@ -1,13 +1,13 @@
 import React from 'react'
 import SectionDestacada from "./SectionDestacada"
-import SectionPopulares from "./SectionPopulares"
+import SectionListado from "./SectionListado"
 
 function Home() {
 	return (
 		<main>
 
 			<SectionDestacada />
-			<SectionPopulares />
+			<SectionListado />
 
 		</main>
 	)
