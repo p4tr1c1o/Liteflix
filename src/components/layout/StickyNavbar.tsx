@@ -15,12 +15,16 @@ function StickyNavbar() {
 }
 
 const Navbar = styled.nav`
-	position: sticky;
 	display: flex;
+	position: fixed;
+	top: 0;
+	width:100%;
 	align-items:center;
 	justify-content: space-between;
 	padding-block: 1rem;
 	padding-inline: 1.5rem;
+	background-color: transparent;
+	z-index: 900;
 `
 
 const NavTitle = styled.span`

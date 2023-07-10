@@ -3,17 +3,12 @@ import { styled } from "styled-components"
 import Row from "../../components/Row"
 import Stack from "../../components/Stack"
 import CardPelicula from "./CardPelicula"
+import SelectTipoListado from "./SelectTipoListado"
 
 function SectionListado() {
 	return (
 		<Container>
-			<Row>
-				<label htmlFor="tipo-lista">Ver:</label>
-				<select id="tipo-lista">
-					<option>populares</option>
-					<option>mis peliculas</option>
-				</select>
-			</Row>
+			<SelectTipoListado />
 
 			<CardPelicula />
 			<CardPelicula />

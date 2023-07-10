@@ -21,6 +21,7 @@ const Container = styled.section`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: flex-end;
 	padding: 2rem;
 `
 
@@ -39,6 +40,14 @@ const SubtituloPelicula = styled.h5`
 	font-size: 1.25rem;
 	font-weight: 400;
 	letter-spacing: 0.25rem;
+	margin-top: 14.5rem;
+`
+const GradientOverlay = styled.div`
+	position: absolute;
+	bottom: 0;
+	width: 20.4rem;
+	height: 7.8rem;
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
 `
 
 export default SectionDestacada
