@@ -21,6 +21,7 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true,
+		"noImplicitAny": false,
 		/* types support*/
 		"types": [
 			"vite-plugin-svgr/client"

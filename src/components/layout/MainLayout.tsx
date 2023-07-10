@@ -1,14 +1,18 @@
 import React from 'react'
 
-import StickyNavbar from "./StickyNavbar"
+import NavbarMobile from "./StickyNavbar"
 import { Outlet } from "react-router-dom"
+import SideNavMenu from "./SidenavMenu";
+import SidenavProvider from "../../contexts/SidenavProvider";
 
 function MainLayout() {
+
 	return (
-		<>
-			<StickyNavbar />
+		<SidenavProvider>
+			<NavbarMobile position="fixed" />
+			<SideNavMenu />
 			<Outlet />
-		</>
+		</SidenavProvider>
 	)
 }
 

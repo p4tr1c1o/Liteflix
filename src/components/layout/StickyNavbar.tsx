@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { styled } from "styled-components"
 import { ReactComponent as MenuIcon } from "../../assets/menu.svg";
+import { ReactComponent as CerrarIcon } from "../../assets/cerrar.svg";
+import { sidenavContext } from "../../contexts/SidenavProvider";
 
-function StickyNavbar() {
+type Props = {
+	position: "fixed" | "relative",
+	showCloseButton?: boolean,
+}
+
+function NavbarMobile({ showCloseButton, position }: Props) {
+	const sidenav = useContext(sidenavContext)
+	if (!sidenav) throw new Error("Missing sidenav context");
+
+
 	return (
-		<Navbar>
-			<MenuIcon />
+		<Navbar position={position}>
+			{
+				showCloseButton
+					? <CerrarIcon onClick={sidenav.toggleSidenav} />
+					: <MenuIcon onClick={sidenav.toggleSidenav} />
+			}
+
 			<NavTitle>
 				<strong>Lite</strong>flix
 			</NavTitle>
@@ -14,9 +30,9 @@ function StickyNavbar() {
 	)
 }
 
-const Navbar = styled.nav`
+const Navbar = styled.nav<{ position: "fixed" | "relative" }>`
 	display: flex;
-	position: fixed;
+	position: ${props => props.position.toString()};
 	top: 0;
 	width:100%;
 	align-items:center;
@@ -24,7 +40,11 @@ const Navbar = styled.nav`
 	padding-block: 1rem;
 	padding-inline: 1.5rem;
 	background-color: transparent;
-	z-index: 900;
+	z-index: 4;
+
+	svg { 
+		cursor: pointer;
+	}
 `
 
 const NavTitle = styled.span`
@@ -41,4 +61,4 @@ const AccountAvatar = styled.img.attrs({
 	border-radius: 50%;
 `
 
-export default StickyNavbar
+export default NavbarMobile
