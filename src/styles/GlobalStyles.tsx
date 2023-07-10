@@ -6,7 +6,7 @@ const GlobalStyles = createGlobalStyle`
 	 * {
 	 	font-family: Bebas Neue;
 		box-sizing: border-box;
-		/* border: 2px solid; */
+		/* border: 1px solid; */
 	 }
 
 	 body { 

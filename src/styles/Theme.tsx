@@ -15,4 +15,6 @@ const theme: DefaultTheme = {
 	},
 }
 
+export const laptop = "@media (min-width: 1024px)"
+
 export default theme

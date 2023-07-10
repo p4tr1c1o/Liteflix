@@ -1,6 +1,7 @@
 import React from 'react'
 import { styled } from "styled-components"
 import BotonIconoPlay from "../../components/BotonIconoPlay"
+import { laptop } from "../../styles/Theme"
 
 
 function CardPelicula() {
@@ -21,10 +22,15 @@ const Container = styled.article`
 	align-items: center;
 	justify-content: flex-end;
 	border-radius: 0.25rem;
-	min-width: 20.4rem;
-	min-height: 10.7rem;
+	width: 20.4rem;
+	height: 10.7rem;
 	overflow: hidden;
 	margin-block: 0.6rem;
+
+	${laptop} {
+		width:  13.75rem;
+		height:  9rem;
+	}
 `
 const ImagenPelicula = styled.img.attrs({
 	src: `${"/images/image-2.png"}`
@@ -47,7 +53,7 @@ const TituloPelicula = styled.h6`
 const GradientOverlay = styled.div`
 	position: absolute;
 	bottom: 0;
-	width: 20.4rem;
+	width: 100%;
 	height: 7.8rem;
 	background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
 `

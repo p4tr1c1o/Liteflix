@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components"
 import BotonSecundario from "../../components/BotonSecundario"
-import Stack from "../../components/Stack"
+import { laptop } from "../../styles/Theme"
 
 function SectionDestacada() {
 	return (
@@ -9,10 +9,10 @@ function SectionDestacada() {
 			<SubtituloPelicula>original de <strong>LITEFLIX</strong></SubtituloPelicula>
 			<TituloPelicula>la casa de papel</TituloPelicula>
 
-			<Stack >
+			<Actions >
 				<BotonSecundario>Reproducir</BotonSecundario>
 				<BotonSecundario>Mi Lista</BotonSecundario>
-			</Stack>
+			</Actions>
 		</Container>
 	)
 }
@@ -20,9 +20,15 @@ function SectionDestacada() {
 const Container = styled.section`
 	display: flex;
 	flex-direction: column;
+	width: 100%;
 	align-items: center;
 	justify-content: flex-end;
-	padding: 2rem;
+	padding-inline: 2rem;
+
+	${laptop} {
+		align-items: flex-start;
+		justify-content: flex-start;
+    }
 `
 
 const TituloPelicula = styled.h1`
@@ -40,14 +46,21 @@ const SubtituloPelicula = styled.h5`
 	font-size: 1.25rem;
 	font-weight: 400;
 	letter-spacing: 0.25rem;
-	margin-top: 14.5rem;
+	margin-top: 16.5rem;
+
+		
+	${laptop} {
+		margin-top: 36rem;
+    }
 `
-const GradientOverlay = styled.div`
-	position: absolute;
-	bottom: 0;
-	width: 20.4rem;
-	height: 7.8rem;
-	background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, #000 100%);
+
+const Actions = styled.div`
+	display: flex;
+	flex-direction: column;
+
+	${laptop} {
+		flex-direction: row;
+	}
 `
 
 export default SectionDestacada
