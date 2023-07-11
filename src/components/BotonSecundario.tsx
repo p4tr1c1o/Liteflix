@@ -11,7 +11,7 @@ const BotonSecundario = styled.button`
 
 	font-size: 1.125rem;
 	line-height: normal;
-	letter-spacing: 0.25rem;
+	
 `
 
 export default BotonSecundario

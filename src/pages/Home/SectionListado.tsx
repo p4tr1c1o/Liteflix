@@ -24,7 +24,7 @@ const Container = styled.section`
 	padding-top: 3rem;
 	
 	${isDesktop} {
-		padding-top: 9.5rem;
+		padding-top: 5rem;
 		padding-right: 2rem;
 	}
 `

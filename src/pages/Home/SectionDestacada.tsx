@@ -45,12 +45,12 @@ const SubtituloPelicula = styled.h5`
 	text-align: center;
 	font-size: 1.25rem;
 	font-weight: 400;
-	letter-spacing: 0.25rem;
+	
 	margin-top: 16.5rem;
 
 		
 	${isDesktop} {
-		margin-top: 36rem;
+		margin-top: 30rem;
     }
 `
 
@@ -58,8 +58,14 @@ const Actions = styled.div`
 	display: flex;
 	flex-direction: column;
 
+
+
 	${isDesktop} {
 		flex-direction: row;
+
+		button {
+			margin-right: 1rem;
+		}
 	}
 `
 

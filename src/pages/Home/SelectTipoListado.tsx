@@ -18,7 +18,7 @@ const Container = styled.div`
 	display: flex;
 	align-items: center;
 	font-size: 1.125rem;
-	letter-spacing: 0.25rem;
+	
 	width: 12.25rem;
 	flex-shrink: 0;
 	margin-bottom: 1.5rem;
@@ -35,7 +35,7 @@ const StyledSelect = styled.select`
 
 	font-size: 1.125rem;
 	font-weight: 600;
-	letter-spacing: 0.25rem;
+	
 	width: 100%;
 	
 	/* &:option:checked {

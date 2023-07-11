@@ -46,7 +46,7 @@ const TituloPelicula = styled.h6`
 	color: #FFF;
 	font-size: 1rem;
 	font-weight: 400;
-	letter-spacing: 0.25rem;
+	
 	z-index: 666;
 `
 

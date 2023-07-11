@@ -2,15 +2,12 @@ import React, { useContext } from 'react'
 import styled, { css } from "styled-components"
 import NavbarMobile from "./NavbarMobile"
 import { sidenavContext } from "../../contexts/SidenavProvider"
-import { ReactComponent as PlusIcon } from "../../assets/plus.svg";
+import { isDesktop } from "../../styles/Theme";
+import BotonAgregarPelicula from "../BotonAgregarPelicula";
 
 function SideNavMenu() {
 	const sidenav = useContext(sidenavContext)
 	if (!sidenav) throw new Error("undefined sidenav context");
-
-	const handleAgregarClick = () => {
-		return
-	}
 
 	return (
 		<Container open={sidenav.isOpen}>
@@ -25,10 +22,7 @@ function SideNavMenu() {
 					<li>MIS PELICULAS</li>
 					<li>MI LISTA</li>
 				</StyledUl>
-				<BotonAgregar onClick={handleAgregarClick}>
-					<PlusIcon />
-					AGREGAR PELICULA
-				</BotonAgregar>
+				<BotonAgregarPelicula />
 				<span > CERRAR SESION </span>
 			</Content>
 		</Container>
@@ -45,10 +39,14 @@ const Container = styled.aside<{ open: boolean }>`
 	height: 100%;
 	width: 0;
 	z-index: 999;
-	letter-spacing: 0.25rem;
-	${props => props.open && css`
-		width: 23.4rem;
-	`}
+	
+	${props => {
+		if (props.open) {
+			return isDesktop
+				? css`width: 47.5rem;`
+				: css`width: 23.4rem;`
+		}
+	}}
 `
 
 const Content = styled.div`
@@ -61,24 +59,6 @@ const StyledUl = styled.ul`
 
 	li {
 		margin-bottom: 2.5rem;
-	}
-`
-
-const BotonAgregar = styled.button`
-	display: flex;
-	padding: 0;
-	margin-top: 2rem;
-	margin-bottom: 4rem;
-	background-color: ${({ theme }) => theme.colors.background};
-	color: ${({ theme }) => theme.colors.white};	
-	font-size: 1rem;
-	font-weight: 700;
-	line-height: normal;
-	letter-spacing: 0.25rem;
-	border: none;
-
-	svg {
-		margin-right: 0.5rem;
 	}
 `
 
