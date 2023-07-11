@@ -10,11 +10,11 @@ async function getPeliculaDestacada() {
 		const response = await fetch("https://api.themoviedb.org/3/movie/now_playing?api_key=6f26fd536dd6192ec8a57e94141f8b20")
 
 		const data: JSONResponse = await response.json() as JSONResponse
-		const { title, poster_path, release_date } = data.results[0]
+		const { title, backdrop_path: poster_path, release_date } = data.results[0]
 
 		return new Pelicula({
 			title,
-			poster_path,
+			backdrop_path: poster_path,
 			release_date
 		})
 

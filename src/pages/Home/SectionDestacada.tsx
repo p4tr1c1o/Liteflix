@@ -7,9 +7,6 @@ import { peliculasContext } from "../../contexts/PeliculasProvider"
 function SectionDestacada() {
 	const peliculas = useContext(peliculasContext)
 
-	console.log(peliculas?.destacada);
-
-
 	return (
 		<Container>
 			<SubtituloPelicula>original de <strong>LITEFLIX</strong></SubtituloPelicula>
