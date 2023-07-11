@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from "styled-components"
 import BotonSecundario from "../../components/BotonSecundario"
 import { isDesktop } from "../../styles/Theme"
+import { peliculasContext } from "../../contexts/PeliculasProvider"
 
 function SectionDestacada() {
+	const peliculas = useContext(peliculasContext)
+
+	console.log(peliculas?.destacada);
+
+
 	return (
 		<Container>
 			<SubtituloPelicula>original de <strong>LITEFLIX</strong></SubtituloPelicula>
-			<TituloPelicula>la casa de papel</TituloPelicula>
+			<TituloPelicula>{peliculas?.destacada?.title}</TituloPelicula>
 
 			<Actions >
 				<BotonSecundario>Reproducir</BotonSecundario>

@@ -6,7 +6,7 @@ import SideNavMenu from "./SidenavMenu";
 import SidenavProvider from "../../contexts/SidenavProvider";
 import { desktopSize } from "../../styles/Theme";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import NavbarDesktop from "./NavBarDesktop";
+import NavbarDesktop from "./NavbarDesktop";
 
 function MainLayout() {
 

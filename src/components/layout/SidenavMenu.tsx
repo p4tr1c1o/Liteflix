@@ -42,15 +42,21 @@ const Container = styled.aside<{ open: boolean }>`
 	
 	${props => {
 		if (props.open) {
-			return isDesktop
-				? css`width: 47.5rem;`
-				: css`width: 23.4rem;`
+			return css`width: 23.4rem;`
 		}
 	}}
+
+	${isDesktop} {
+		${props => {
+		if (props.open) {
+			return css`width: 47.5rem;`
+		}
+	}}
+	}
 `
 
 const Content = styled.div`
-	padding-left: 1.5rem
+	padding-left: 1.5rem;
 `
 
 const StyledUl = styled.ul`
