@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled, { css } from "styled-components"
-import NavbarMobile from "./StickyNavbar"
+import NavbarMobile from "./NavbarMobile"
 import { sidenavContext } from "../../contexts/SidenavProvider"
 import { ReactComponent as PlusIcon } from "../../assets/plus.svg";
 

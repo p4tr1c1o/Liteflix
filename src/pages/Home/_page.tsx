@@ -2,7 +2,7 @@ import React from 'react'
 import SectionDestacada from "./SectionDestacada"
 import SectionListado from "./SectionListado"
 import { styled } from "styled-components"
-import { laptop } from "../../styles/Theme"
+import { isDesktop } from "../../styles/Theme"
 
 function Home() {
 	return (
@@ -25,7 +25,7 @@ const Content = styled.div`
 	max-width: 1280px;
 	margin-inline: auto;
 	
-	${laptop} {
+	${isDesktop} {
 		flex-direction: row;
 	}
 `
@@ -44,7 +44,7 @@ const CartelDestacada = styled.div`
 	z-index: -100;
 
 		
-	${laptop} {
+	${isDesktop} {
 		position: fixed;
 		height: 100%;
     }

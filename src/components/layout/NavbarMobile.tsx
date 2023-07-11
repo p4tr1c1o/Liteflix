@@ -3,6 +3,8 @@ import { styled } from "styled-components"
 import { ReactComponent as MenuIcon } from "../../assets/menu.svg";
 import { ReactComponent as CerrarIcon } from "../../assets/cerrar.svg";
 import { sidenavContext } from "../../contexts/SidenavProvider";
+import LogoLiteflix from "../LogoLiteflix";
+import AvatarCuenta from "../AvatarCuenta";
 
 type Props = {
 	position: "fixed" | "relative",
@@ -22,10 +24,8 @@ function NavbarMobile({ showCloseButton, position }: Props) {
 					: <MenuIcon onClick={sidenav.toggleSidenav} />
 			}
 
-			<NavTitle>
-				<strong>Lite</strong>flix
-			</NavTitle>
-			<AccountAvatar />
+			<LogoLiteflix />
+			<AvatarCuenta />
 		</Navbar>
 	)
 }
@@ -47,18 +47,5 @@ const Navbar = styled.nav<{ position: "fixed" | "relative" }>`
 	}
 `
 
-const NavTitle = styled.span`
-	color: ${({ theme }) => theme.colors.primary};
-	font-size: 1.75rem;
-	letter-spacing: 0.25rem;
-`
-const AccountAvatar = styled.img.attrs({
-	src: `${"/images/avatar.png"}`
-})`
-	vertical-align: middle;
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-`
 
 export default NavbarMobile

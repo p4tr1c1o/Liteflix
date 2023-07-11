@@ -2,7 +2,7 @@ import React from 'react'
 import { styled } from "styled-components"
 import CardPelicula from "./CardPelicula"
 import SelectTipoListado from "./SelectTipoListado"
-import { laptop } from "../../styles/Theme"
+import { isDesktop } from "../../styles/Theme"
 
 function SectionListado() {
 	return (
@@ -22,9 +22,10 @@ const Container = styled.section`
 	flex-direction: column;
 	align-items: center;
 	padding-top: 3rem;
-
-	${laptop} {
+	
+	${isDesktop} {
 		padding-top: 9.5rem;
+		padding-right: 2rem;
 	}
 `
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components"
 import BotonSecundario from "../../components/BotonSecundario"
-import { laptop } from "../../styles/Theme"
+import { isDesktop } from "../../styles/Theme"
 
 function SectionDestacada() {
 	return (
@@ -25,7 +25,7 @@ const Container = styled.section`
 	justify-content: flex-end;
 	padding-inline: 2rem;
 
-	${laptop} {
+	${isDesktop} {
 		align-items: flex-start;
 		justify-content: flex-start;
     }
@@ -49,7 +49,7 @@ const SubtituloPelicula = styled.h5`
 	margin-top: 16.5rem;
 
 		
-	${laptop} {
+	${isDesktop} {
 		margin-top: 36rem;
     }
 `
@@ -58,7 +58,7 @@ const Actions = styled.div`
 	display: flex;
 	flex-direction: column;
 
-	${laptop} {
+	${isDesktop} {
 		flex-direction: row;
 	}
 `

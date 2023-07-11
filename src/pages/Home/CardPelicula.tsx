@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from "styled-components"
 import BotonIconoPlay from "../../components/BotonIconoPlay"
-import { laptop } from "../../styles/Theme"
+import { isDesktop } from "../../styles/Theme"
 
 
 function CardPelicula() {
@@ -27,7 +27,7 @@ const Container = styled.article`
 	overflow: hidden;
 	margin-block: 0.6rem;
 
-	${laptop} {
+	${isDesktop} {
 		width:  13.75rem;
 		height:  9rem;
 	}

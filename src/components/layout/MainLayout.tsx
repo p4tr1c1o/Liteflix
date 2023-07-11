@@ -1,16 +1,23 @@
 import React from 'react'
 
-import NavbarMobile from "./StickyNavbar"
+import NavbarMobile from "./NavbarMobile"
 import { Outlet } from "react-router-dom"
 import SideNavMenu from "./SidenavMenu";
 import SidenavProvider from "../../contexts/SidenavProvider";
-import { styled } from "styled-components";
+import { desktopSize } from "../../styles/Theme";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import NavbarDesktop from "./NavBarDesktop";
 
 function MainLayout() {
 
+	const isDesktop = useMediaQuery(`(min-width: ${desktopSize})`)
+
 	return (
 		<SidenavProvider>
-			<NavbarMobile position="fixed" />
+			{isDesktop
+				? <NavbarDesktop />
+				: <NavbarMobile position="fixed" />
+			}
 			<SideNavMenu />
 			<Outlet />
 		</SidenavProvider>
