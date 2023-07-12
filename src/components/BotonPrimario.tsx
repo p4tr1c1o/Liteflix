@@ -8,13 +8,17 @@ const BotonPrimario = styled.button`
 	background-color: ${({ theme }) => theme.colors.background};
 	color: ${({ theme }) => theme.colors.white};
 	padding-block: 1rem;
-	margin-block: 0.75rem;
+	margin-block: 0.5rem;
 	min-width: 15.5rem;
 	border: none;
 
 	font-size: 1.125rem;
 	line-height: normal;
 	
+	&:disabled{
+		background-color: ${({ theme }) => theme.colors.grey};
+	}
+
 	svg {
 		margin-right: 0.75rem;
 	}

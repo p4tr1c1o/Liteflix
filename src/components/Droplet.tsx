@@ -50,6 +50,29 @@ function Droplet() {
 		inputRef.current?.click()
 	}
 
+	const StyledDroplet = styled.div`
+		cursor:	pointer;
+		display: flex;
+		align-items:center;
+		justify-content: center;
+		margin-block: 1.5rem;
+		margin-inline: 1.5rem;
+		padding-block: 2rem;
+		padding-inline: 4.5rem;
+		border: 1px dashed ${({ theme }) => theme.colors.white};
+		
+		${isDragActive && (css`background-color:rgba(255, 255, 255, 0.35)`)}
+		
+		svg {
+			margin-right: 1rem;
+		}
+
+		input {
+			display: none;
+			visibility: hidden;
+		}
+	`
+
 
 	return (
 		<StyledDroplet
@@ -57,7 +80,6 @@ function Droplet() {
 			onDragLeave={toggleDrag}
 			onDrop={handleDrop}
 			onClick={handleClick}
-			isDragActive={isDragActive}
 			draggable={true}
 		>
 			<input type="file" ref={inputRef} />
@@ -67,35 +89,6 @@ function Droplet() {
 	)
 }
 
-const StyledDroplet = styled.div<{ isDragActive: boolean }>`
-	cursor:	pointer;
-	display: flex;
-	align-items:center;
-	justify-content: center;
-	margin-block: 3rem;
-	margin-inline: 1.5rem;
-	padding-block: 2.5rem;
-	padding-inline: 4.5rem;
-	border: 1px dashed ${({ theme }) => theme.colors.white};
-	
-	${props => {
-		if (props.isDragActive) {
-			return css`
-				/* background-color: ${({ theme }) => theme.colors.white}; */
-				background-color:rgba(255, 255, 255, 0.35);
-				`
-		}
-	}}
-	
 
-	svg {
-		margin-right: 1rem;
-	}
-
-	input {
-		display:none;
-    	visibility:hidden;
-	}
-`
 
 export default Droplet

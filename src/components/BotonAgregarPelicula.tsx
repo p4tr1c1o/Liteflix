@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from "styled-components"
 import { ReactComponent as PlusIcon } from "../assets/plus.svg";
+import { layoutContext } from "../contexts/SidenavProvider";
 
 function BotonAgregarPelicula() {
+	const layout = useContext(layoutContext)
+
 
 	const handleAgregarClick = () => {
-		return
+		layout?.toggleDialog()
+		if (layout?.isOpen)
+			layout?.toggleSidenav()
+
 	}
 
 	return (
@@ -16,13 +22,14 @@ function BotonAgregarPelicula() {
 }
 
 const BotonAgregar = styled.button`
+	cursor: pointer;
 	display: flex;
 	padding: 0;
 	margin-top: 2rem;
 	margin-bottom: 4rem;
-	background-color: ${({ theme }) => theme.colors.background};
+	background-color: transparent;
 	color: ${({ theme }) => theme.colors.white};	
-	font-size: 1rem;
+	font-size: 1.125rem;
 	font-weight: 700;
 	
 	border: none;

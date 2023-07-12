@@ -20,7 +20,7 @@ function MainLayout() {
 				: <NavbarMobile position="fixed" />
 			}
 			<SideNavMenu />
-			<ModalDialog showdialog={true} />
+			<ModalDialog />
 			<Outlet />
 		</LayoutProvider>
 	)

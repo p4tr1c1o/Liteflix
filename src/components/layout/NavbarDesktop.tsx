@@ -5,6 +5,7 @@ import LogoLiteflix from "../LogoLiteflix";
 import AvatarCuenta from "../AvatarCuenta";
 import { ReactComponent as MenuIcon } from "../../assets/menu.svg";
 import { ReactComponent as BellIcon } from "../../assets/bell.svg";
+import BotonAgregarPelicula from "../BotonAgregarPelicula";
 
 function NavbarDesktop() {
 	const layout = useContext(layoutContext)
@@ -12,7 +13,10 @@ function NavbarDesktop() {
 
 	return (
 		<Navbar>
-			<LogoLiteflix />
+			<ContainerLogo>
+				<LogoLiteflix />
+				<BotonAgregarPelicula />
+			</ContainerLogo>
 			<ContainerIconos>
 				<MenuIcon onClick={layout.toggleSidenav} />
 				<BellIcon />
@@ -35,6 +39,21 @@ const Navbar = styled.nav`
 	margin-block: 1.75rem;
 	padding-inline: 2rem;
 `
+
+const ContainerLogo = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	span {
+		margin-right: 4rem;
+	}
+
+	button {
+		margin: 0;
+	}
+`
+
 const ContainerIconos = styled.div`
 	display: flex;
 	flex-direction: row;

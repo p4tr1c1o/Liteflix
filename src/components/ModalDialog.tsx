@@ -1,31 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { css, styled } from "styled-components"
 import BotonPrimario from "./BotonPrimario"
 import TextInput from "./TextInput"
 import { ReactComponent as CerrarIcon } from "../assets/cerrar.svg";
 import Droplet from "./Droplet";
+import { layoutContext } from "../contexts/SidenavProvider";
 
-type Props = {
-	showdialog: boolean
-}
+function ModalDialog() {
+	const layout = useContext(layoutContext)
+	if (!layout) throw new Error("");
 
-function ModalDialog({ showdialog }: Props) {
-	return (
-		<Overlay showdialog={showdialog}>
-			<StyledDialog open={showdialog}>
-				<Topbar ><CerrarIcon /></Topbar>
-				<Titulo>AGREGAR PELICULA</Titulo>
-				<Droplet />
-				<form method="dialog">
-					<TextInput />
-					<BotonPrimario> SUBIR PELICULA </BotonPrimario>
-				</form>
-			</StyledDialog>
-		</Overlay>
-	)
-}
 
-const Overlay = styled.div<Props>`
+	const Overlay = styled.div`
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -36,40 +22,58 @@ const Overlay = styled.div<Props>`
 	visibility: hidden;
 	opacity: 0;
 
-	${props => {
-		if (props.showdialog) {
-			return css`
+	${layout.isDialogOpen && (
+			css`
 			visibility: visible;
 			opacity: 1;
-		`
+		`)
 		}
-	}}		
-`
+	`
+
+	return (
+		<Overlay>
+			<StyledDialog open={layout.isDialogOpen}>
+				<Topbar ><CerrarIcon onClick={layout?.toggleDialog} /></Topbar>
+				<Titulo>AGREGAR PELICULA</Titulo>
+				<Droplet />
+				<form method="dialog">
+					<TextInput />
+					<BotonPrimario disabled> SUBIR PELICULA </BotonPrimario>
+				</form>
+			</StyledDialog>
+		</Overlay>
+	)
+}
 
 const StyledDialog = styled.dialog`
-	display: flex;
-	flex-direction: column;
-	align-items:center;
-	justify-content: center;
-	border: none;
-	background-color: ${({ theme }) => theme.colors.background};
-	color: ${({ theme }) => theme.colors.white};
-	margin: 10% auto;
-	padding: 1.5rem;
-	position: relative;
-
+		display: flex;
+		flex-direction: column;
+		align-items:center;
+		justify-content: center;
+		border: none;
+		background-color: ${({ theme }) => theme.colors.background};
+		color: ${({ theme }) => theme.colors.white};
+		margin: 10% auto;
+		padding: 1.5rem;
+		position: relative;
 `
 
 const Topbar = styled.div`
 	display: flex;
 	justify-content:flex-end;
-	width: 100%
+	width: 100%;
+
+	svg {
+		cursor: pointer;
+	}
+
 `
 
 const Titulo = styled.h5`
 	color: ${({ theme }) => theme.colors.primary};
 	font-size: 1.25rem;
 	font-weight: 700;
+	margin-bottom: 2rem;
 `
 
 
