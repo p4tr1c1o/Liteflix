@@ -3,16 +3,16 @@ import { ThemeProvider } from "styled-components"
 import AppRoutes from "./routes/AppRouter"
 import GlobalStyles from "./styles/GlobalStyles"
 import theme from "./styles/Theme"
-import PeliculasProvider from "./contexts/PeliculasProvider"
+import DestacadaProvider from "./contexts/DestacadaProvider"
 
 function App() {
 	return (
 		<>
 			<ThemeProvider theme={theme}>
 				<GlobalStyles />
-				<PeliculasProvider>
+				<DestacadaProvider>
 					<AppRoutes />
-				</PeliculasProvider>
+				</DestacadaProvider>
 			</ThemeProvider>
 		</>
 	)

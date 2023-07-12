@@ -2,20 +2,24 @@ import React, { useContext } from 'react'
 import styled from "styled-components"
 import BotonSecundario from "../../components/BotonSecundario"
 import { isDesktop } from "../../styles/Theme"
-import { peliculasContext } from "../../contexts/PeliculasProvider"
+import { destacadaContext } from "../../contexts/DestacadaProvider.tsx"
 
 function SectionDestacada() {
-	const peliculas = useContext(peliculasContext)
+	const destacada = useContext(destacadaContext)
 
 	return (
 		<Container>
-			<SubtituloPelicula>original de <strong>LITEFLIX</strong></SubtituloPelicula>
-			<TituloPelicula>{peliculas?.destacada?.title}</TituloPelicula>
+			{destacada &&
+				<>
+					<SubtituloPelicula>original de <strong>LITEFLIX</strong></SubtituloPelicula>
+					<TituloPelicula>{destacada?.title}</TituloPelicula>
 
-			<Actions >
-				<BotonSecundario>Reproducir</BotonSecundario>
-				<BotonSecundario>Mi Lista</BotonSecundario>
-			</Actions>
+					<Actions >
+						<BotonSecundario>Reproducir</BotonSecundario>
+						<BotonSecundario>Mi Lista</BotonSecundario>
+					</Actions>
+				</>
+			}
 		</Container>
 	)
 }

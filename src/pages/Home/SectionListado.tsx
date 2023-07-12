@@ -3,16 +3,18 @@ import { styled } from "styled-components"
 import CardPelicula from "./CardPelicula"
 import SelectTipoListado from "./SelectTipoListado"
 import { isDesktop } from "../../styles/Theme"
+import { useGetQuery } from "../../hooks/useFetch"
+import Pelicula, { mapPeliculasPopulares } from "../../models/Pelicula"
+
 
 function SectionListado() {
+	const urlPopulares = "https://api.themoviedb.org/3/movie/popular?api_key=6f26fd536dd6192ec8a57e94141f8b20"
+	const { data: peliculasPopulares } = useGetQuery<Pelicula[]>(urlPopulares, mapPeliculasPopulares)
+
 	return (
 		<Container>
 			<SelectTipoListado />
-
-			<CardPelicula />
-			<CardPelicula />
-			<CardPelicula />
-			<CardPelicula />
+			{peliculasPopulares?.map(pelicula => <CardPelicula key={pelicula.title} />)}
 		</Container >
 	)
 }
