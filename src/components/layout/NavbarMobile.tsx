@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { styled } from "styled-components"
 import { ReactComponent as MenuIcon } from "../../assets/menu.svg";
 import { ReactComponent as CerrarIcon } from "../../assets/cerrar.svg";
-import { sidenavContext } from "../../contexts/SidenavProvider";
+import { layoutContext } from "../../contexts/SidenavProvider";
 import LogoLiteflix from "../LogoLiteflix";
 import AvatarCuenta from "../AvatarCuenta";
 
@@ -12,16 +12,16 @@ type Props = {
 }
 
 function NavbarMobile({ showCloseButton, position }: Props) {
-	const sidenav = useContext(sidenavContext)
-	if (!sidenav) throw new Error("Missing sidenav context");
+	const layout = useContext(layoutContext)
+	if (!layout) throw new Error("Missing sidenav context");
 
 
 	return (
 		<Navbar position={position}>
 			{
 				showCloseButton
-					? <CerrarIcon onClick={sidenav.toggleSidenav} />
-					: <MenuIcon onClick={sidenav.toggleSidenav} />
+					? <CerrarIcon onClick={layout.toggleSidenav} />
+					: <MenuIcon onClick={layout.toggleSidenav} />
 			}
 
 			<LogoLiteflix />

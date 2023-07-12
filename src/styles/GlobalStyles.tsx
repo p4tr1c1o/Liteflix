@@ -27,6 +27,10 @@ const GlobalStyles = createGlobalStyle`
 		padding: 0;
 		list-style: none;
 	 }
+	 
+	 dialog {
+		padding: 0;
+	 }
 `
 
 export default GlobalStyles

@@ -5,6 +5,7 @@ import SectionListado from "./SectionListado"
 import { isDesktop } from "../../styles/Theme"
 import DestacadaProvider from "../../contexts/DestacadaProvider"
 import CartelDestacada from "./CartelDestacada"
+import ModalDialog from "../../components/ModalDialog"
 
 function Home() {
 

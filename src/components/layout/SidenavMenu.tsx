@@ -1,16 +1,16 @@
 import React, { useContext } from 'react'
 import styled, { css } from "styled-components"
 import NavbarMobile from "./NavbarMobile"
-import { sidenavContext } from "../../contexts/SidenavProvider"
+import { layoutContext } from "../../contexts/SidenavProvider"
 import { isDesktop } from "../../styles/Theme";
 import BotonAgregarPelicula from "../BotonAgregarPelicula";
 
 function SideNavMenu() {
-	const sidenav = useContext(sidenavContext)
-	if (!sidenav) throw new Error("undefined sidenav context");
+	const layout = useContext(layoutContext)
+	if (!layout) throw new Error("undefined sidenav context");
 
 	return (
-		<Container open={sidenav.isOpen}>
+		<Container open={layout.isOpen}>
 			<NavbarMobile position="relative" showCloseButton />
 			<Content>
 				<StyledUl>

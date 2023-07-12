@@ -1,21 +1,31 @@
-import React, { createContext, useCallback, useState } from 'react'
+import React, { createContext } from 'react'
+import { useToggle } from "../hooks/useToggle"
 
-export const sidenavContext = createContext<{
-	toggleSidenav: () => void,
+export const layoutContext = createContext<{
 	isOpen: boolean,
+	isDialogOpen: boolean,
+	isDrawerOpen: boolean,
+	toggleSidenav: () => void,
+	toggleDialog: () => void,
+	toggleDrawer: () => void,
 } | undefined>(undefined)
 
-function SidenavProvider({ children }) {
-	const [isOpen, setIsOpen] = useState(false)
-	const toggleSidenav = useCallback(() => setIsOpen(value => !value), [])
+function LayoutProvider({ children }) {
+	const [isOpen, toggleSidenav] = useToggle()
+	const [isDialogOpen, toggleDialog] = useToggle()
+	const [isDrawerOpen, toggleDrawer] = useToggle()
 
-	const value = { isOpen, toggleSidenav }
+	const value = {
+		isOpen, toggleSidenav,
+		isDialogOpen, toggleDialog,
+		isDrawerOpen, toggleDrawer
+	}
 
 	return (
-		<sidenavContext.Provider value={value}>
+		<layoutContext.Provider value={value}>
 			{children}
-		</sidenavContext.Provider>
+		</layoutContext.Provider>
 	)
 }
 
-export default SidenavProvider
+export default LayoutProvider

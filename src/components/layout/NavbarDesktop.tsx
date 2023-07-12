@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { sidenavContext } from "../../contexts/SidenavProvider";
+import { layoutContext } from "../../contexts/SidenavProvider";
 import { styled } from "styled-components";
 import LogoLiteflix from "../LogoLiteflix";
 import AvatarCuenta from "../AvatarCuenta";
@@ -7,14 +7,14 @@ import { ReactComponent as MenuIcon } from "../../assets/menu.svg";
 import { ReactComponent as BellIcon } from "../../assets/bell.svg";
 
 function NavbarDesktop() {
-	const sidenav = useContext(sidenavContext)
-	if (!sidenav) throw new Error("Missing sidenav context");
+	const layout = useContext(layoutContext)
+	if (!layout) throw new Error("Missing sidenav context");
 
 	return (
 		<Navbar>
 			<LogoLiteflix />
 			<ContainerIconos>
-				<MenuIcon onClick={sidenav.toggleSidenav} />
+				<MenuIcon onClick={layout.toggleSidenav} />
 				<BellIcon />
 				<AvatarCuenta />
 			</ContainerIconos>
