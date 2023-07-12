@@ -2,14 +2,29 @@ import React from 'react'
 import { styled } from "styled-components"
 import BotonIconoPlay from "../../components/BotonIconoPlay"
 import { isDesktop } from "../../styles/Theme"
+import Pelicula from "../../models/Pelicula"
+
+type Props = {
+	pelicula: Pelicula
+}
+
+function CardPelicula({ pelicula }: Props) {
+	const srcPelicula: string | undefined = `https://image.tmdb.org/t/p/w300${pelicula.backdrop_path}`
+
+	const ImagenPelicula = styled.img.attrs({
+		src: `${srcPelicula}`
+	})`
+		position: absolute;
+		top: 0;
+		z-index: -1;
+	`
 
 
-function CardPelicula() {
 	return (
 		<Container>
 			<ImagenPelicula />
 			<BotonIconoPlay />
-			<TituloPelicula>house of cards</TituloPelicula>
+			<TituloPelicula>{pelicula.title}</TituloPelicula>
 			<GradientOverlay />
 		</Container>
 	)
@@ -22,7 +37,7 @@ const Container = styled.article`
 	align-items: center;
 	justify-content: flex-end;
 	border-radius: 0.25rem;
-	width: 20.4rem;
+	width: 300px;
 	height: 10.7rem;
 	overflow: hidden;
 	margin-block: 0.6rem;
@@ -32,20 +47,14 @@ const Container = styled.article`
 		height:  9rem;
 	}
 `
-const ImagenPelicula = styled.img.attrs({
-	src: `${"/images/image-2.png"}`
-})`
-	position: absolute;
-  	top: 0;
-	z-index: -1;
-`
 
 const TituloPelicula = styled.h6`
 	margin-top: 1.5rem;
-	margin-bottom: 2rem;
+	margin-bottom: 0.8rem;
 	color: #FFF;
 	font-size: 1rem;
 	font-weight: 400;
+	text-align:center;
 	
 	z-index: 666;
 `

@@ -14,7 +14,7 @@ function SectionListado() {
 	return (
 		<Container>
 			<SelectTipoListado />
-			{peliculasPopulares?.map(pelicula => <CardPelicula key={pelicula.title} />)}
+			{peliculasPopulares?.map(pelicula => <CardPelicula key={pelicula.title} pelicula={pelicula} />)}
 		</Container >
 	)
 }
@@ -26,7 +26,6 @@ const Container = styled.section`
 	padding-top: 3rem;
 	
 	${isDesktop} {
-		padding-top: 5rem;
 		padding-right: 2rem;
 	}
 `

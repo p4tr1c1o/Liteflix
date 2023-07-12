@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import styled from "styled-components"
-import { destacadaContext, imageBaseUrl } from "../../contexts/DestacadaProvider"
+import { destacadaContext } from "../../contexts/DestacadaProvider"
 import { isDesktop } from "../../styles/Theme"
 
 function CartelDestacada() {
 	let srcDestacada: string | undefined
 	const destacada = useContext(destacadaContext)
 
-	if (destacada?.backdrop_path) srcDestacada = `${imageBaseUrl}${destacada?.backdrop_path}`
+	if (destacada?.backdrop_path) srcDestacada = `https://image.tmdb.org/t/p/original${destacada?.backdrop_path}`
 
 
 	const CartelDestacada = styled.div`

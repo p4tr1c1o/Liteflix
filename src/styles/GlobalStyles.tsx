@@ -4,8 +4,10 @@ const GlobalStyles = createGlobalStyle`
 	 @import url('https://fonts.cdnfonts.com/css/bebas-neue');
 	 
 	 * {
-	 	font-family: Bebas Neue;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
 		box-sizing: border-box;
+	 	font-family: Bebas Neue;
 		letter-spacing: 0.25rem;
 		/* border: 1px solid; */
 	 }

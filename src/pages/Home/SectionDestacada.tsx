@@ -1,8 +1,11 @@
 import React, { useContext } from 'react'
 import styled from "styled-components"
+import BotonOutline from "../../components/BotonOutline.tsx"
 import BotonSecundario from "../../components/BotonSecundario"
 import { isDesktop } from "../../styles/Theme"
 import { destacadaContext } from "../../contexts/DestacadaProvider.tsx"
+import { ReactComponent as PlayIcon } from "../../assets/play.svg";
+import { ReactComponent as PlusIcon } from "../../assets/plus.svg";
 
 function SectionDestacada() {
 	const destacada = useContext(destacadaContext)
@@ -15,8 +18,14 @@ function SectionDestacada() {
 					<TituloPelicula>{destacada?.title}</TituloPelicula>
 
 					<Actions >
-						<BotonSecundario>Reproducir</BotonSecundario>
-						<BotonSecundario>Mi Lista</BotonSecundario>
+						<BotonSecundario>
+							<PlayIcon />
+							Reproducir
+						</BotonSecundario>
+						<BotonOutline>
+							<PlusIcon />
+							Mi Lista
+						</BotonOutline>
 					</Actions>
 				</>
 			}

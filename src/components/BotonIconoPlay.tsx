@@ -6,7 +6,7 @@ import { ReactComponent as PlayIcon } from "../assets/play.svg";
 function BotonIconoPlay() {
 	return (
 		<Container>
-			<Icon />
+			<StyledIcon />
 		</Container>
 	)
 }
@@ -22,7 +22,7 @@ const Container = styled.div`
 	background-color: rgba(36, 36, 36, 0.50);
 	z-index:10;
 `
-const Icon = styled(PlayIcon)`
+const StyledIcon = styled(PlayIcon)`
 	width: 1.2rem;
 	height: 1.2rem;
 `
