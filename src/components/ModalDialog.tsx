@@ -5,10 +5,15 @@ import TextInput from "./TextInput"
 import { ReactComponent as CerrarIcon } from "../assets/cerrar.svg";
 import Droplet from "./Droplet";
 import { layoutContext } from "../contexts/SidenavProvider";
+import { useFileUpload } from "../hooks/useFileUpload";
+import ProgressBar from "./ProgressBar";
 
 function ModalDialog() {
 	const layout = useContext(layoutContext)
 	if (!layout) throw new Error("");
+
+	const { uploadFile, isLoading, progress, error, downloadURL, cancelUpload } = useFileUpload()
+
 
 	const preventDrop = (event: DragEvent) => event.preventDefault()
 
@@ -37,10 +42,16 @@ function ModalDialog() {
 			<StyledDialog open={layout.isDialogOpen}>
 				<Topbar ><CerrarIcon onClick={layout?.toggleDialog} /></Topbar>
 				<Titulo>AGREGAR PELICULA</Titulo>
-				<Droplet />
+
+				<DropletContainer>
+					{isLoading
+						? <ProgressBar progress={progress} error={error} onCancel={cancelUpload} />
+						: <Droplet handleFile={uploadFile} />}
+				</DropletContainer>
+
 				<form method="dialog">
 					<TextInput />
-					<BotonPrimario disabled> SUBIR PELICULA </BotonPrimario>
+					<BotonPrimario disabled={Boolean(downloadURL)}> SUBIR PELICULA </BotonPrimario>
 				</form>
 			</StyledDialog>
 		</Overlay>
@@ -78,6 +89,9 @@ const Titulo = styled.h5`
 	margin-bottom: 2rem;
 `
 
+const DropletContainer = styled.div`
+	min-width: 40rem;
+`
 
 
 export default ModalDialog

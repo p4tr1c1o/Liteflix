@@ -1,22 +1,27 @@
 
+import { StorageError } from "firebase/storage"
 import { css, styled } from "styled-components"
 
 type Props = {
 	progress?: number,
-	error: Error
+	error?: StorageError,
+	onCancel?: () => boolean
 }
 
-function ProgressBar({ progress, error }: Props) {
+function ProgressBar({ progress, error, onCancel }: Props) {
 
-	// function hancleReintentarClick() {
-	// 	return
-	// }
+	function hancleReintentarClick() {
+
+		return
+	}
 	function hancleCancelClick() {
+		console.log("cancel");
+		if (onCancel) onCancel()
 		return
 	}
 
 	const BotonDinamico = () => {
-		if (error) return <StyledButton onClick={hancleCancelClick}>REINTENTAR</StyledButton>
+		if (error) return <StyledButton onClick={hancleReintentarClick}>REINTENTAR</StyledButton>
 		if (progress && progress >= 100) return <LabelListo>¡LISTO!</LabelListo>
 		if (progress && progress < 100) return <StyledButton onClick={hancleCancelClick}>CANCELAR</StyledButton>
 	}
@@ -45,7 +50,6 @@ const LabelProgreso = styled.div`
 		font-size: 1rem;
 	`
 const StyledButton = styled.button`
-	border: none;
 	color: ${({ theme }) => theme.colors.white};
 	background-color: transparent;
 	margin-block: 1.25rem;
@@ -72,5 +76,7 @@ const StyledProgressBar = styled.div<{ progress?: number }>`
 	margin-block: 1rem;
 	height: 0.65rem;
 	width: ${props => css`${props.progress}%` ?? 0};	
+	transition-delay: 0.2; 
+	transition-duration: 0.8; 
 `
 export default ProgressBar

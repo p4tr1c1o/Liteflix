@@ -3,37 +3,34 @@ import { useToggle } from "../hooks/useToggle";
 import { ReactComponent as ClipIcon } from "../assets/clip.svg";
 import styled, { css } from "styled-components";
 
+type Props = {
+	handleFile?: (file: File) => void
+}
 
-function Droplet() {
-	const [isDragActive, toggleDrag, setActive] = useToggle()
+function Droplet({ handleFile }: Props) {
 	const inputRef = React.useRef<HTMLInputElement>(null)
+	const [isDragActive, toggleDrag, setActive] = useToggle()
 
-	function handleFile(file) {
-		console.log(file);
-
-	}
 
 	function handleDrop(event: DragEvent) {
 		event.preventDefault()
-		event.stopPropagation()
 		toggleDrag()
 
 		if (event.dataTransfer?.files && event.dataTransfer?.files[0]) {
-			handleFile(event.dataTransfer.files[0]);
+			handleFile && handleFile(event.dataTransfer.files[0])
 		}
-		return
+	}
+
+	function handleChange(event: ChangeEvent<HTMLInputElement>) {
+		event.preventDefault()
+		if (event.target.files && event.target.files[0]) {
+			(handleFile && handleFile(event.target.files[0]))
+		}
 	}
 
 	function handleClick() {
 		inputRef.current?.click()
 	}
-
-	function handleChange(event: ChangeEvent<HTMLInputElement>) {
-		console.log(event.target.files && event.target.files[0]);
-
-		return
-	}
-
 
 
 	const StyledDroplet = styled.div`
@@ -46,7 +43,7 @@ function Droplet() {
 		padding-block: 2rem;
 		padding-inline: 4.5rem;
 		border: 1px dashed ${({ theme }) => theme.colors.white};
-		z-index: 99999;
+		z-index: 9999;
 		${isDragActive && (css`background-color:rgba(255, 255, 255, 0.35);`)}
 		
 		svg {
@@ -58,10 +55,6 @@ function Droplet() {
 			visibility: hidden;
 		}
 	`
-
-
-
-
 	return (
 		<StyledDroplet
 			onDragOver={() => setActive(true)}
