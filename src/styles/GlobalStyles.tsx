@@ -1,8 +1,7 @@
 import { createGlobalStyle } from "styled-components"
 
 const GlobalStyles = createGlobalStyle`
-	 @import url('https://fonts.cdnfonts.com/css/bebas-neue');
-	 
+
 	 * {
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
