@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { css, styled } from "styled-components"
 
 type Props = {
@@ -8,9 +8,9 @@ type Props = {
 
 function ProgressBar({ progress, error }: Props) {
 
-	function hancleReintentarClick() {
-		return
-	}
+	// function hancleReintentarClick() {
+	// 	return
+	// }
 	function hancleCancelClick() {
 		return
 	}

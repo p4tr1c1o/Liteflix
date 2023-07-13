@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { layoutContext } from "../../contexts/SidenavProvider";
 import { styled } from "styled-components";
 import LogoLiteflix from "../LogoLiteflix";

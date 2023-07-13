@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { styled } from "styled-components"
 import { ReactComponent as MenuIcon } from "../../assets/menu.svg";
 import { ReactComponent as CerrarIcon } from "../../assets/cerrar.svg";

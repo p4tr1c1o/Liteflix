@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import styled from "styled-components"
 import { ReactComponent as PlusIcon } from "../assets/plus.svg";
 import { layoutContext } from "../contexts/SidenavProvider";

@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { styled } from "styled-components"
 import BotonIconoPlay from "../../components/BotonIconoPlay"
 import { isDesktop } from "../../styles/Theme"

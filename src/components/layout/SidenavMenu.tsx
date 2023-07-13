@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import styled, { css } from "styled-components"
 import NavbarMobile from "./NavbarMobile"
 import { layoutContext } from "../../contexts/SidenavProvider"

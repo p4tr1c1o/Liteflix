@@ -1,11 +1,9 @@
-import React, { useContext } from 'react'
 import { styled } from "styled-components"
 import SectionDestacada from "./SectionDestacada"
 import SectionListado from "./SectionListado"
 import { isDesktop } from "../../styles/Theme"
 import DestacadaProvider from "../../contexts/DestacadaProvider"
 import CartelDestacada from "./CartelDestacada"
-import ModalDialog from "../../components/ModalDialog"
 
 function Home() {
 

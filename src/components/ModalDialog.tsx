@@ -1,4 +1,4 @@
-import React, { useContext, DragEvent } from 'react'
+import { useContext, DragEvent } from 'react'
 import { css, styled } from "styled-components"
 import BotonPrimario from "./BotonPrimario"
 import TextInput from "./TextInput"

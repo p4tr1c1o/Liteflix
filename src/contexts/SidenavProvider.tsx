@@ -1,4 +1,4 @@
-import React, { createContext } from 'react'
+import { createContext } from 'react'
 import { useToggle } from "../hooks/useToggle"
 
 export const layoutContext = createContext<{

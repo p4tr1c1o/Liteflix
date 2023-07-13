@@ -1,4 +1,4 @@
-import React, { ChangeEvent, DragEvent, MouseEvent } from 'react'
+import React, { ChangeEvent, DragEvent } from 'react'
 import { useToggle } from "../hooks/useToggle";
 import { ReactComponent as ClipIcon } from "../assets/clip.svg";
 import styled, { css } from "styled-components";

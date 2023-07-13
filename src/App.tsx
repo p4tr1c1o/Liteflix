@@ -1,4 +1,3 @@
-import React from 'react'
 import { ThemeProvider } from "styled-components"
 import AppRoutes from "./routes/AppRouter"
 import GlobalStyles from "./styles/GlobalStyles"
