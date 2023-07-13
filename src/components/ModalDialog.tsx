@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, DragEvent } from 'react'
 import { css, styled } from "styled-components"
 import BotonPrimario from "./BotonPrimario"
 import TextInput from "./TextInput"
@@ -10,6 +10,7 @@ function ModalDialog() {
 	const layout = useContext(layoutContext)
 	if (!layout) throw new Error("");
 
+	const preventDrop = (event: DragEvent) => event.preventDefault()
 
 	const Overlay = styled.div`
 	position: absolute;
@@ -21,6 +22,7 @@ function ModalDialog() {
 	transition: opacity 200ms;
 	visibility: hidden;
 	opacity: 0;
+	z-index: 9998;
 
 	${layout.isDialogOpen && (
 			css`
@@ -31,7 +33,7 @@ function ModalDialog() {
 	`
 
 	return (
-		<Overlay>
+		<Overlay onDragOver={preventDrop} onDrop={preventDrop}>
 			<StyledDialog open={layout.isDialogOpen}>
 				<Topbar ><CerrarIcon onClick={layout?.toggleDialog} /></Topbar>
 				<Titulo>AGREGAR PELICULA</Titulo>
