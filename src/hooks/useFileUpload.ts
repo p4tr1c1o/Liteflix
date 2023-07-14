@@ -31,15 +31,14 @@ export function useFileUpload() {
 						cancelUpload: () => uploadTaskRef.current?.cancel() ?? false
 					})
 
-
-					switch (snapshot.state) {
-						case 'paused':
-							console.log('Upload is paused');
-							break;
-						case 'running':
-							console.log('Upload is running');
-							break;
-					}
+					// switch (snapshot.state) {
+					// 	case 'paused':
+					// 		console.log('Upload is paused');
+					// 		break;
+					// 	case 'running':
+					// 		console.log('Upload is running');
+					// 		break;
+					// }
 				},
 				(error) => {
 					setState({ ...state, error, isLoading: false })

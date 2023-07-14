@@ -6,7 +6,7 @@ import LayoutProvider from "../../contexts/SidenavProvider";
 import { desktopSize } from "../../styles/Theme";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import NavbarDesktop from "./NavbarDesktop";
-import ModalDialog from "../ModalDialog";
+import ModalDialog from "./ModalDialog";
 
 function MainLayout() {
 

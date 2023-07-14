@@ -50,6 +50,7 @@ const LabelProgreso = styled.div`
 		font-size: 1rem;
 	`
 const StyledButton = styled.button`
+	border: none;
 	color: ${({ theme }) => theme.colors.white};
 	background-color: transparent;
 	margin-block: 1.25rem;

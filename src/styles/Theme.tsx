@@ -7,7 +7,7 @@ const theme: DefaultTheme = {
 		secondary: "",
 		warning: "",
 		success: "",
-		error: "",
+		error: "#FF3333",
 		background: "#242424",
 		white: "#FFF",
 		grey: "rgba(255, 255, 255, 0.50)",

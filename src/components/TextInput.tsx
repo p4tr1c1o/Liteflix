@@ -1,12 +1,10 @@
 
 import { styled } from "styled-components"
 
-function TextInput() {
+function TextInput(props) {
 	return (
-		<StyledTextInput type="text" name="search" placeholder="TITULO" />
+		<StyledTextInput {...props} />
 	)
-
-
 }
 
 const StyledTextInput = styled.input`
