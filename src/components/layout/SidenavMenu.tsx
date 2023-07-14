@@ -33,6 +33,12 @@ const Container = styled.aside<{ open: boolean }>`
 	position: fixed;
 	top: 0;
 	left: 0;
+	${isDesktop} {
+		${() => css`
+			left: unset;
+			right: 0;
+		`}
+	}
 	background-color: ${({ theme }) => theme.colors.background};
 	overflow-x: hidden;
 	transition: width 0.5s;
@@ -49,7 +55,11 @@ const Container = styled.aside<{ open: boolean }>`
 	${isDesktop} {
 		${props => {
 		if (props.open) {
-			return css`width: 47.5rem;`
+			return css`
+				left:none;
+				right: 0;
+				width: 47.5rem;
+				`
 		}
 	}}
 	}

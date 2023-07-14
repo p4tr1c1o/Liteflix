@@ -1,7 +1,7 @@
 import { styled } from "styled-components"
 import SectionDestacada from "./SectionDestacada"
 import SectionListado from "./SectionListado"
-import { isDesktop } from "../../styles/Theme"
+import { containerMaxSize, isDesktop } from "../../styles/Theme"
 import DestacadaProvider from "../../contexts/DestacadaProvider"
 import CartelDestacada from "./CartelDestacada"
 
@@ -28,7 +28,8 @@ const Container = styled.main`
 const Content = styled.div`
 	display: flex;
 	flex-direction: column;	
-	max-width: 1280px;
+	width: 90%;
+	max-width: ${containerMaxSize};
 	margin-inline: auto;
 	
 	${isDesktop} {

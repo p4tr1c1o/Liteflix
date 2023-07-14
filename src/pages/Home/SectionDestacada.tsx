@@ -61,12 +61,11 @@ const SubtituloPelicula = styled.h5`
 	text-align: center;
 	font-size: 1.25rem;
 	font-weight: 400;
-	
 	margin-top: 16.5rem;
 
 		
 	${isDesktop} {
-		margin-top: 30rem;
+		margin-top: 40%;
     }
 `
 

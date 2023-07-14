@@ -6,6 +6,7 @@ import AvatarCuenta from "../AvatarCuenta";
 import { ReactComponent as MenuIcon } from "../../assets/menu.svg";
 import { ReactComponent as BellIcon } from "../../assets/bell.svg";
 import BotonAgregarPelicula from "../BotonAgregarPelicula";
+import { containerMaxSize } from "../../styles/Theme";
 
 function NavbarDesktop() {
 	const layout = useContext(layoutContext)
@@ -33,7 +34,7 @@ const Navbar = styled.nav`
 	
 	top: 0;
 	width:90%;
-	max-width: 1728px;
+	max-width: ${containerMaxSize};
 	margin-inline: auto;
 	margin-block: 1.75rem;
 	padding-inline: 2rem;

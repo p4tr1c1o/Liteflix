@@ -17,5 +17,6 @@ const theme: DefaultTheme = {
 
 export const desktopSize = "1024px"
 export const isDesktop = `@media (min-width: ${desktopSize})`
+export const containerMaxSize = "1728px"
 
 export default theme

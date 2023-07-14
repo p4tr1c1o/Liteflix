@@ -22,7 +22,6 @@ function FormNuevaPelicula() {
 	});
 
 	function handleSubmit(values: { titulo: string }) {
-
 		alert(JSON.stringify(values, null, 2));
 		console.log(downloadURL);
 	}
@@ -46,7 +45,7 @@ function FormNuevaPelicula() {
 
 				/>
 			</form>
-			{formik.touched.titulo && formik.errors.titulo && <LabelError>{formik.errors.titulo}</LabelError>}
+			{(formik.touched.titulo && formik.errors.titulo && Boolean(formik.submitCount)) && <LabelError>{formik.errors.titulo}</LabelError>}
 			<BotonPrimario disabled={!downloadURL} onClick={() => formik.handleSubmit()}> SUBIR PELICULA </BotonPrimario>
 		</>
 	)
