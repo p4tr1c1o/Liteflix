@@ -32,9 +32,8 @@ const Navbar = styled.nav`
 	justify-content: space-between;
 	
 	top: 0;
-	width:100%;
-	
-	max-width: 1280px;
+	width:90%;
+	max-width: 1728px;
 	margin-inline: auto;
 	margin-block: 1.75rem;
 	padding-inline: 2rem;

@@ -36,7 +36,6 @@ function ModalDialog() {
 		`)
 		}
 	`
-
 	return (
 		<Overlay onDragOver={preventDrop} onDrop={preventDrop}>
 			<StyledDialog open={layout.isDialogOpen}>
@@ -51,7 +50,7 @@ function ModalDialog() {
 
 				<form method="dialog">
 					<TextInput />
-					<BotonPrimario disabled={Boolean(downloadURL)}> SUBIR PELICULA </BotonPrimario>
+					<BotonPrimario disabled={!downloadURL}> SUBIR PELICULA </BotonPrimario>
 				</form>
 			</StyledDialog>
 		</Overlay>

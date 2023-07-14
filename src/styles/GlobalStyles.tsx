@@ -27,6 +27,10 @@ const GlobalStyles = createGlobalStyle`
 		list-style: none;
 	 }
 	 
+	 button:hover:enabled { 
+		opacity: 0.75;
+	 }
+
 	 dialog {
 		padding: 0;
 	 }

@@ -23,8 +23,8 @@ function NavbarMobile({ showCloseButton, position }: Props) {
 					? <CerrarIcon onClick={layout.toggleSidenav} />
 					: <MenuIcon onClick={layout.toggleSidenav} />
 			}
-
 			<LogoLiteflix />
+
 			<AvatarCuenta />
 		</Navbar>
 	)

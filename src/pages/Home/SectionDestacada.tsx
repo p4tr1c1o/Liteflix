@@ -19,12 +19,10 @@ function SectionDestacada() {
 
 					<Actions >
 						<BotonSecundario>
-							<PlayIcon />
-							Reproducir
+							<PlayIcon /> Reproducir
 						</BotonSecundario>
 						<BotonOutline>
-							<PlusIcon />
-							Mi Lista
+							<PlusIcon /> Mi Lista
 						</BotonOutline>
 					</Actions>
 				</>
@@ -54,6 +52,8 @@ const TituloPelicula = styled.h1`
 	line-height: 4.84375rem;
 	letter-spacing: 0.75rem;
 	text-transform: uppercase;
+	word-break: break-word;
+	max-width: 45rem;
 `
 
 const SubtituloPelicula = styled.h5`
