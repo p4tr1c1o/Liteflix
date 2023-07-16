@@ -32,8 +32,8 @@ function ModalDialog() {
 	`
 	return (
 		<Overlay onDragOver={preventDrop} onDrop={preventDrop}>
-			{layout.isDialogOpen && (
-				<StyledDialog open={layout.isDialogOpen}>
+			{layout?.isDialogOpen && (
+				<StyledDialog open={layout?.isDialogOpen}>
 					<Topbar ><CerrarIcon onClick={layout?.toggleDialog} /></Topbar>
 					<FormNuevaPelicula />
 				</StyledDialog>

@@ -10,7 +10,7 @@ function SideNavMenu() {
 	if (!layout) throw new Error("undefined sidenav context");
 
 	return (
-		<Container open={layout.isOpen}>
+		<Container open={layout.isSidenavOpen}>
 			<NavbarMobile position="relative" showCloseButton />
 			<Content>
 				<StyledUl>

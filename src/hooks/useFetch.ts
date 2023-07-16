@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 
-export function useGetQuery<T>(url: string, converter: (json) => T) {
+export function useFetch<T>(url: string, converter?: (json) => T) {
 	const [data, setData] = useState<T | undefined>();
-	const [loading, setLoading] = useState(false);
+	const [isLoading, setLoading] = useState(false);
 	const [error, setError] = useState<string | undefined>();
 
 	useEffect(() => {
@@ -15,7 +15,7 @@ export function useGetQuery<T>(url: string, converter: (json) => T) {
 				const json = await response.json() as T
 
 				setLoading(false)
-				setData(converter(json))
+				converter ? setData(converter(json)) : setData(json)
 				setError(undefined)
 
 			} catch (error) {
@@ -26,5 +26,5 @@ export function useGetQuery<T>(url: string, converter: (json) => T) {
 		void fetchData()
 	}, [url, converter]);
 
-	return { data, loading, error };
+	return { data, isLoading, error };
 }

@@ -6,24 +6,35 @@ import { useFormik } from "formik";
 import * as Yup from 'yup';
 import { useFileUpload } from "../../hooks/useFileUpload";
 import styled from "styled-components";
+// import { usePost } from "../../hooks/usePost";
 
 function FormNuevaPelicula() {
 	const { uploadFile, isLoading, progress, error, downloadURL, cancelUpload } = useFileUpload()
+	// const { isSubmiting, handlePost } = usePost()
 	const validation = Yup.object({
-		titulo: Yup.string().min(1, "El titulo debe tener almenos 1 caracter").required("El titulo es obligatorio"),
+		title: Yup.string().min(1, "El titulo debe tener almenos 1 caracter").required("El titulo es obligatorio"),
 	})
 
 	const formik = useFormik({
 		initialValues: {
-			titulo: "",
+			title: "",
 		},
 		validationSchema: validation,
 		onSubmit: handleSubmit,
 	});
 
-	function handleSubmit(values: { titulo: string }) {
-		alert(JSON.stringify(values, null, 2));
-		console.log(downloadURL);
+	async function handleSubmit(formValues: { title: string }) {
+		const data = { title: formValues.title, backdrop_path: downloadURL, }
+
+		alert(JSON.stringify(data, null, 2));
+		const result = await fetch("https://us-central1-liteflix-7359f.cloudfunctions.net/api/peliculas",
+			{
+				method: "POST",
+				body: JSON.stringify(data),
+				headers: { 'Content-Type': 'application/json' },
+			})
+
+		// console.log(await result.json());
 	}
 
 	return (
@@ -38,14 +49,14 @@ function FormNuevaPelicula() {
 
 			<form noValidate onSubmit={formik.handleSubmit}>
 				<TextInput
-					id="titulo"
+					id="title"
 					type="text"
 					placeholder="TITULO"
-					{...formik.getFieldProps("titulo")}
+					{...formik.getFieldProps("title")}
 
 				/>
 			</form>
-			{(formik.touched.titulo && formik.errors.titulo && Boolean(formik.submitCount)) && <LabelError>{formik.errors.titulo}</LabelError>}
+			{(formik.touched.title && formik.errors.title && Boolean(formik.submitCount)) && <LabelError>{formik.errors.title}</LabelError>}
 			<BotonPrimario disabled={!downloadURL} onClick={() => formik.handleSubmit()}> SUBIR PELICULA </BotonPrimario>
 		</>
 	)

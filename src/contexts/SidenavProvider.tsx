@@ -2,7 +2,7 @@ import { createContext } from 'react'
 import { useToggle } from "../hooks/useToggle"
 
 export const layoutContext = createContext<{
-	isOpen: boolean,
+	isSidenavOpen: boolean,
 	isDialogOpen: boolean,
 	isDrawerOpen: boolean,
 	toggleSidenav: () => void,
@@ -11,12 +11,12 @@ export const layoutContext = createContext<{
 } | undefined>(undefined)
 
 function LayoutProvider({ children }) {
-	const [isOpen, toggleSidenav] = useToggle()
+	const [isSidenavOpen, toggleSidenav] = useToggle()
 	const [isDialogOpen, toggleDialog] = useToggle()
 	const [isDrawerOpen, toggleDrawer] = useToggle()
 
 	const value = {
-		isOpen, toggleSidenav,
+		isSidenavOpen, toggleSidenav,
 		isDialogOpen, toggleDialog,
 		isDrawerOpen, toggleDrawer
 	}

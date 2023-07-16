@@ -1,14 +1,25 @@
 
 import { styled } from "styled-components"
 import Arrow from "../../assets/arrow.svg"
+import { ChangeEvent } from "react"
 
-function SelectTipoListado() {
+type Props = {
+	setValue: (value) => void
+}
+
+function SelectTipoListado({ setValue }: Props) {
+
+	function handleChange(event: ChangeEvent<HTMLSelectElement>) {
+		console.log("change", event.target.value);
+		setValue(event.target.value)
+	}
+
 	return (
 		<Container>
 			<label htmlFor="tipo-lista">Ver: {"  "}</label>
-			<StyledSelect id="tipo-lista">
-				<option value={1}>populares</option>
-				<option value={2}>mis peliculas</option>
+			<StyledSelect id="tipo-lista" onChange={handleChange}>
+				<option value={"Populares"}>Populares</option>
+				<option value={"MisPeliculas"}>Mis Peliculas</option>
 			</StyledSelect>
 		</Container>
 	)
@@ -38,6 +49,11 @@ const StyledSelect = styled.select`
 	
 	width: 100%;
 	
+	option {
+		background-color: ${({ theme }) => theme.colors.background};
+		color: ${({ theme }) => theme.colors.white};
+	}
+
 	/* &:option:checked {
 		background: url(${Arrow}) no-repeat right;
 		background-color: red;
@@ -48,7 +64,9 @@ const StyledSelect = styled.select`
 	// Flecha
 	z-index: 1;
 	background: url(${Arrow}) no-repeat right;
+	/* background-color: transparent; */
 	background-color: ${({ theme }) => theme.colors.background};
+	opacity: 0.8;
 
 	// Remove dropdown arrow in IE10 & IE11
 	// @link https://www.filamentgroup.com/lab/select-css.html

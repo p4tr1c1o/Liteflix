@@ -9,9 +9,7 @@ function BotonAgregarPelicula() {
 
 	const handleAgregarClick = () => {
 		layout?.toggleDialog()
-		if (layout?.isOpen)
-			layout?.toggleSidenav()
-
+		if (layout?.isSidenavOpen) layout?.toggleSidenav()
 	}
 
 	return (
