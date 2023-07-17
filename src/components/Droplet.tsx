@@ -2,12 +2,16 @@ import React, { ChangeEvent, DragEvent } from 'react'
 import { useToggle } from "../hooks/useToggle";
 import { ReactComponent as ClipIcon } from "../assets/clip.svg";
 import styled, { css } from "styled-components";
+import { useMediaQuery } from "../hooks/useMediaQuery";
+import { desktopSize, isDesktop } from "../styles/Theme";
+
 
 type Props = {
 	handleFile?: (file: File) => void
 }
 
 function Droplet({ handleFile }: Props) {
+	const isDesktop = useMediaQuery(`(min-width: ${desktopSize})`)
 	const inputRef = React.useRef<HTMLInputElement>(null)
 	const [isDragActive, toggleDrag, setActive] = useToggle()
 
@@ -32,6 +36,7 @@ function Droplet({ handleFile }: Props) {
 		inputRef.current?.click()
 	}
 
+	console.log(isDesktop);
 
 
 	return (
@@ -43,7 +48,11 @@ function Droplet({ handleFile }: Props) {
 		>
 			<input type="file" ref={inputRef} onChange={handleChange} accept="image/png, image/gif, image/jpeg" />
 			<ClipIcon />
-			AGREGA UN ARCHIVO O ARRASTRALO Y SOLTALO AQUI
+			{isDesktop
+				? "AGREGA UN ARCHIVO O ARRASTRALO Y SOLTALO AQUI"
+				: "Agregar un archivo"
+			}
+
 		</StyledDroplet>
 	)
 }
@@ -56,10 +65,14 @@ const StyledDroplet = styled.div<{ $isDragActive: boolean }>`
 		margin-block: 1.5rem;
 		margin-inline: 1.5rem;
 		padding-block: 2rem;
-		padding-inline: 4.5rem;
+		padding-inline: 3.5rem;
 		border: 1px dashed ${({ theme }) => theme.colors.white};
 		z-index: 9999;
 		
+		${isDesktop}{
+			padding-inline: 4.5rem;
+		}
+
 	${props => {
 		if (props.$isDragActive) {
 			return css`background-color:rgba(255, 255, 255, 0.35);`

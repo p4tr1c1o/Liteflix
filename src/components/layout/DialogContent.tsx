@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import FormNuevaPelicula from "./FormNuevaPelicula";
+import FormNuevaPelicula from "../FormNuevaPelicula";
 import LogoLiteflix from "../LogoLiteflix";
 import Pelicula from "../../models/Pelicula";
 import { styled } from "styled-components";

@@ -11,7 +11,21 @@ function ModalDialog() {
 	const layout = useContext(layoutContext)
 	if (!layout) throw new Error("layout context missing");
 
-	const Overlay = styled.div`
+
+	return (
+		<Overlay onDragOver={preventDrop} onDrop={preventDrop} $isOpen={layout.isDialogOpen}>
+			{layout?.isDialogOpen && (
+				<StyledDialog open={layout?.isDialogOpen}>
+					<Topbar ><CerrarIcon onClick={layout?.toggleDialog} /></Topbar>
+					<DialogContent />
+				</StyledDialog>
+			)}
+		</Overlay>
+	)
+}
+
+
+const Overlay = styled.div<{ $isOpen: boolean }>`
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -23,24 +37,14 @@ function ModalDialog() {
 	opacity: 0;
 	z-index: 9998;
 
-	${layout.isDialogOpen && (
-			css`
+	${props => {
+		if (props.$isOpen) {
+			return css`
 			visibility: visible;
 			opacity: 1;
-		`)
-		}
+		`}
+	}}
 	`
-	return (
-		<Overlay onDragOver={preventDrop} onDrop={preventDrop}>
-			{layout?.isDialogOpen && (
-				<StyledDialog open={layout?.isDialogOpen}>
-					<Topbar ><CerrarIcon onClick={layout?.toggleDialog} /></Topbar>
-					<DialogContent />
-				</StyledDialog>
-			)}
-		</Overlay>
-	)
-}
 
 const StyledDialog = styled.dialog`
 		display: flex;

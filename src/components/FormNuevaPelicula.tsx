@@ -1,17 +1,28 @@
+import { useContext } from "react";
+
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import { useFileUpload } from "../../hooks/useFileUpload";
+import { useFileUpload } from "../hooks/useFileUpload";
 import styled from "styled-components";
-import BotonPrimario from "../BotonPrimario";
-import Droplet from "../Droplet";
-import ProgressBar from "../ProgressBar";
-import TextInput from "../TextInput";
+import BotonPrimario from "./BotonPrimario";
+import Droplet from "./Droplet";
+import ProgressBar from "./ProgressBar";
+import TextInput from "./TextInput";
+import { desktopSize, isDesktop } from "../styles/Theme";
+import { useMediaQuery } from "../hooks/useMediaQuery";
+
+import BotonOutline from "./BotonOutline";
+import { layoutContext } from "../contexts/SidenavProvider";
 
 type Props = {
 	handleOk: (value) => void
 }
 
 function FormNuevaPelicula({ handleOk }: Props) {
+	const layout = useContext(layoutContext)
+	if (!layout) throw new Error("undefined layout context");
+
+	const showSalir = !useMediaQuery(`(min-width: ${desktopSize})`)
 	const { uploadFile, isUploading, progress, error, downloadURL, cancelUpload } = useFileUpload()
 
 	const validation = Yup.object({
@@ -58,7 +69,11 @@ function FormNuevaPelicula({ handleOk }: Props) {
 				/>
 			</form>
 			{(formik.errors.title && Boolean(formik.submitCount)) && <LabelError>{formik.errors.title}</LabelError>}
-			<BotonPrimario disabled={!downloadURL} onClick={() => formik.handleSubmit()}> SUBIR PELICULA </BotonPrimario>
+			<ButtonContainer>
+
+				<BotonPrimario disabled={!downloadURL} onClick={() => formik.handleSubmit()}> SUBIR PELICULA </BotonPrimario>
+				{showSalir && <BotonOutline onClick={() => layout.toggleDialog()} > salir</BotonOutline>}
+			</ButtonContainer>
 		</>
 	)
 }
@@ -69,7 +84,12 @@ const Titulo = styled.h5`
 	color: ${({ theme }) => theme.colors.primary};
 	font-size: 1.25rem;
 	font-weight: 700;
+	margin-top: 4.5rem;
 	margin-bottom: 2rem;
+
+	${isDesktop}{
+		margin-top: 0;
+	}
 `
 
 const LabelError = styled.span`
@@ -77,7 +97,13 @@ const LabelError = styled.span`
 `
 
 const DropletContainer = styled.div`
-	min-width: 40rem;
+	/* min-width: 40rem; */
 `
+const ButtonContainer = styled.div`
+	margin-top: 6rem;
 
+	${isDesktop}{
+		margin-top:0;
+	}
+`
 export default FormNuevaPelicula

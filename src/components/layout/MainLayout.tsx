@@ -7,6 +7,7 @@ import { desktopSize } from "../../styles/Theme";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import NavbarDesktop from "./NavbarDesktop";
 import ModalDialog from "./ModalDialog";
+import RightDialog from "./RightDialog";
 
 function MainLayout() {
 
@@ -19,7 +20,10 @@ function MainLayout() {
 				: <NavbarMobile position="fixed" />
 			}
 			<SideNavMenu />
-			<ModalDialog />
+			{isDesktop
+				? <ModalDialog />
+				: <RightDialog />
+			}
 			<Outlet />
 		</LayoutProvider>
 	)
