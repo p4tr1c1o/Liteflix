@@ -19,12 +19,12 @@ function SectionListado() {
 		<Container>
 			<SelectTipoListado setValue={setTipoListado} />
 
-			{tipoListado == "Populares" && peliculasPopulares?.map(peli =>
-				<CardPelicula key={peli.title} pelicula={peli} />
+			{tipoListado == "Populares" && peliculasPopulares?.map((peli, index) =>
+				<CardPelicula key={index + 1} pelicula={peli} />
 			)}
 
-			{tipoListado == "MisPeliculas" && misPeliculas?.map(peli =>
-				<CardPelicula key={peli.title} pelicula={peli} />
+			{tipoListado == "MisPeliculas" && misPeliculas?.map((peli, index) =>
+				<CardPelicula key={index + 1} pelicula={peli} fromFirestore />
 			)}
 		</Container >
 	)

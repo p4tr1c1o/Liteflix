@@ -1,29 +1,23 @@
 
-import { styled } from "styled-components"
+import { css, styled } from "styled-components"
 import BotonIconoPlay from "../../components/BotonIconoPlay"
 import { isDesktop } from "../../styles/Theme"
 import Pelicula from "../../models/Pelicula"
 
 type Props = {
-	pelicula: Pelicula
+	pelicula: Pelicula,
+	fromFirestore?: boolean
 }
 
-function CardPelicula({ pelicula }: Props) {
-	const srcPelicula: string | undefined = `https://image.tmdb.org/t/p/w300${pelicula.backdrop_path}`
+function CardPelicula({ pelicula, fromFirestore }: Props) {
+	const srcPelicula = fromFirestore
+		? pelicula.backdrop_path
+		: `https://image.tmdb.org/t/p/w300${pelicula.backdrop_path}`
 
-	const ImagenPelicula = styled.img.attrs({
-		src: `${srcPelicula}`
-	})`
-		position: absolute;
-		top: 0;
-		z-index: -1;
 
-		animation: fadeIn ease 3s;
-		animation-iteration-count: 1;
-	`
 	return (
 		<Container>
-			<ImagenPelicula />
+			<ImagenPelicula src={srcPelicula} />
 			<BotonIconoPlay />
 			<TituloPelicula>{pelicula.title}</TituloPelicula>
 			<GradientOverlay />
@@ -47,6 +41,15 @@ const Container = styled.article`
 		width:  13.75rem;
 		height:  9rem;
 	}
+`
+const ImagenPelicula = styled.img`
+	position: absolute;
+	top: 0;
+	z-index: -1;
+	animation: fadeIn ease 3s;
+	animation-iteration-count: 1;
+	max-width:300px;
+	
 `
 
 const TituloPelicula = styled.h6`

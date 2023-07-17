@@ -18,8 +18,8 @@ function SelectTipoListado({ setValue }: Props) {
 		<Container>
 			<label htmlFor="tipo-lista">Ver: {"  "}</label>
 			<StyledSelect id="tipo-lista" onChange={handleChange}>
-				<option value={"Populares"}>Populares</option>
-				<option value={"MisPeliculas"}>Mis Peliculas</option>
+				<option value={"Populares"}>populares</option>
+				<option value={"MisPeliculas"}>mis peliculas</option>
 			</StyledSelect>
 		</Container>
 	)
