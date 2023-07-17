@@ -41,6 +41,11 @@ Luego levantar el entorno de desarrollo con:
 
 	yarn run dev
 
+
+Para correr el UI kit
+
+	yarn run storybook
+
 ## Como se despliega
 
 Este proyecto se encuentra integrado con Firebase a traves de Github Actions, por lo cual luego de cada push se ejecuta un Action de build y despliegue al hosting.
