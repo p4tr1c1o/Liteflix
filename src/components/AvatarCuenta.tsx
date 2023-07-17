@@ -2,14 +2,12 @@ import { styled } from "styled-components"
 
 function AvatarCuenta() {
 	return (
-		<Avatar />
+		<Avatar src="/assets/avatar.png" />
 	)
 }
 
 
-const Avatar = styled.img.attrs({
-	src: `${"/images/avatar.png"}`
-})`
+const Avatar = styled.img`
 	vertical-align: middle;
 	width: 40px;
 	height: 40px;
