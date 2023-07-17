@@ -2,14 +2,14 @@ import { useContext, DragEvent } from 'react'
 import { css, styled } from "styled-components"
 import { ReactComponent as CerrarIcon } from "../../assets/cerrar.svg";
 import { layoutContext } from "../../contexts/SidenavProvider";
-import FormNuevaPelicula from "./FormNuevaPelicula";
+import DialogContent from "./DialogContent";
 
 const preventDrop = (event: DragEvent) => event.preventDefault()
 
 
 function ModalDialog() {
 	const layout = useContext(layoutContext)
-	if (!layout) throw new Error("");
+	if (!layout) throw new Error("layout context missing");
 
 	const Overlay = styled.div`
 	position: absolute;
@@ -35,7 +35,7 @@ function ModalDialog() {
 			{layout?.isDialogOpen && (
 				<StyledDialog open={layout?.isDialogOpen}>
 					<Topbar ><CerrarIcon onClick={layout?.toggleDialog} /></Topbar>
-					<FormNuevaPelicula />
+					<DialogContent />
 				</StyledDialog>
 			)}
 		</Overlay>
@@ -53,6 +53,8 @@ const StyledDialog = styled.dialog`
 		margin: 10% auto;
 		padding: 1.5rem;
 		position: relative;
+		min-width: 730px;
+		min-height: 440px;
 `
 
 const Topbar = styled.div`

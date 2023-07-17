@@ -1,16 +1,21 @@
-import BotonPrimario from "../BotonPrimario"
-import TextInput from "../TextInput"
-import Droplet from "../Droplet";
-import ProgressBar from "../ProgressBar";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 import { useFileUpload } from "../../hooks/useFileUpload";
 import styled from "styled-components";
+import BotonPrimario from "../BotonPrimario";
+import Droplet from "../Droplet";
+import ProgressBar from "../ProgressBar";
+import TextInput from "../TextInput";
 
-function FormNuevaPelicula() {
-	const { uploadFile, isLoading, progress, error, downloadURL, cancelUpload } = useFileUpload()
+type Props = {
+	handleOk: (value) => void
+}
+
+function FormNuevaPelicula({ handleOk }: Props) {
+	const { uploadFile, isUploading, progress, error, downloadURL, cancelUpload } = useFileUpload()
+
 	const validation = Yup.object({
-		title: Yup.string().min(1, "El titulo debe tener almenos 1 caracter").required("El titulo es obligatorio"),
+		title: Yup.string().required("El titulo es obligatorio"),
 	})
 
 	const formik = useFormik({
@@ -19,28 +24,28 @@ function FormNuevaPelicula() {
 		},
 		validationSchema: validation,
 		onSubmit: handleSubmit,
-	});
+	})
 
 	async function handleSubmit(formValues: { title: string }) {
 		const data = { title: formValues.title, backdrop_path: downloadURL, }
-		const result = await fetch("https://us-central1-liteflix-7359f.cloudfunctions.net/api/peliculas",
+		const response = await fetch("https://us-central1-liteflix-7359f.cloudfunctions.net/api/peliculas",
 			{
 				method: "POST",
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify(data),
 			})
 
-		console.log(await result.json());
+		if (response.ok) handleOk(await response.json())
 	}
-
 	return (
 		<>
 			<Titulo>AGREGAR PELICULA</Titulo>
 
 			<DropletContainer>
-				{isLoading
+				{isUploading
 					? <ProgressBar progress={progress} error={error} onCancel={cancelUpload} />
-					: <Droplet handleFile={uploadFile} />}
+					: <Droplet handleFile={uploadFile} />
+				}
 			</DropletContainer>
 
 			<form noValidate onSubmit={formik.handleSubmit}>
@@ -52,11 +57,12 @@ function FormNuevaPelicula() {
 
 				/>
 			</form>
-			{(formik.touched.title && formik.errors.title && Boolean(formik.submitCount)) && <LabelError>{formik.errors.title}</LabelError>}
+			{(formik.errors.title && Boolean(formik.submitCount)) && <LabelError>{formik.errors.title}</LabelError>}
 			<BotonPrimario disabled={!downloadURL} onClick={() => formik.handleSubmit()}> SUBIR PELICULA </BotonPrimario>
 		</>
 	)
 }
+
 
 
 const Titulo = styled.h5`
@@ -73,6 +79,5 @@ const LabelError = styled.span`
 const DropletContainer = styled.div`
 	min-width: 40rem;
 `
-
 
 export default FormNuevaPelicula

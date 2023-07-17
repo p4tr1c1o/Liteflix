@@ -4,8 +4,8 @@ const BotonPrimario = styled.button`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: ${({ theme }) => theme.colors.background};
-	color: ${({ theme }) => theme.colors.white};
+	background-color: ${({ theme }) => theme.colors.white};
+	color: ${({ theme }) => theme.colors.black};
 	padding-block: 1rem;
 	margin-block: 0.5rem;
 	min-width: 15.5rem;

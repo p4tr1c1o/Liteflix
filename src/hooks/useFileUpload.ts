@@ -5,7 +5,7 @@ import { useCallback, useRef, useState } from "react";
 type StateType = {
 	uploadFile?: (file: File) => void,
 	cancelUpload?: () => boolean,
-	isLoading?: boolean,
+	isUploading?: boolean,
 	progress?: number,
 	downloadURL?: string,
 	error?: StorageError
@@ -27,7 +27,7 @@ export function useFileUpload() {
 					setState({
 						...state,
 						progress,
-						isLoading: true,
+						isUploading: true,
 						cancelUpload: () => uploadTaskRef.current?.cancel() ?? false
 					})
 
@@ -41,13 +41,13 @@ export function useFileUpload() {
 					// }
 				},
 				(error) => {
-					setState({ ...state, error, isLoading: false })
+					setState({ ...state, error, isUploading: false })
 				},
 				() => {
 					getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
 						console.log(downloadURL);
 
-						setState({ ...state, downloadURL, isLoading: false })
+						setState({ ...state, downloadURL, isUploading: false })
 					}).catch(error => console.log(error))
 				}
 			)
