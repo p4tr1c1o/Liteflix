@@ -1,8 +1,8 @@
 import { styled } from "styled-components"
-
+import avatarSrc from "../assets/avatar.png"
 function AvatarCuenta() {
 	return (
-		<Avatar src="/assets/avatar.png" />
+		<Avatar src={avatarSrc} />
 	)
 }
 
