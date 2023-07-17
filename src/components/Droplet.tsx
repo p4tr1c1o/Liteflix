@@ -33,7 +33,22 @@ function Droplet({ handleFile }: Props) {
 	}
 
 
-	const StyledDroplet = styled.div`
+
+	return (
+		<StyledDroplet
+			onDragOver={() => setActive(true)}
+			onDrop={handleDrop}
+			onClick={handleClick}
+			$isDragActive={isDragActive}
+		>
+			<input type="file" ref={inputRef} onChange={handleChange} accept="image/png, image/gif, image/jpeg" />
+			<ClipIcon />
+			AGREGA UN ARCHIVO O ARRASTRALO Y SOLTALO AQUI
+		</StyledDroplet>
+	)
+}
+
+const StyledDroplet = styled.div<{ $isDragActive: boolean }>`
 		cursor:	pointer;
 		display: flex;
 		align-items:center;
@@ -44,8 +59,13 @@ function Droplet({ handleFile }: Props) {
 		padding-inline: 4.5rem;
 		border: 1px dashed ${({ theme }) => theme.colors.white};
 		z-index: 9999;
-		${isDragActive && (css`background-color:rgba(255, 255, 255, 0.35);`)}
 		
+	${props => {
+		if (props.$isDragActive) {
+			return css`background-color:rgba(255, 255, 255, 0.35);`
+		}
+	}}
+	
 		svg {
 			margin-right: 1rem;
 		}
@@ -54,20 +74,7 @@ function Droplet({ handleFile }: Props) {
 			display: none;
 			visibility: hidden;
 		}
-	`
-	return (
-		<StyledDroplet
-			onDragOver={() => setActive(true)}
-			onDrop={handleDrop}
-			onClick={handleClick}
-		>
-			<input type="file" ref={inputRef} onChange={handleChange} accept="image/png, image/gif, image/jpeg" />
-			<ClipIcon />
-			AGREGA UN ARCHIVO O ARRASTRALO Y SOLTALO AQUI
-		</StyledDroplet>
-	)
-}
-
+`
 
 
 export default Droplet

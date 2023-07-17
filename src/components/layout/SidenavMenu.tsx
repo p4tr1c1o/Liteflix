@@ -10,7 +10,7 @@ function SideNavMenu() {
 	if (!layout) throw new Error("undefined sidenav context");
 
 	return (
-		<Container open={layout.isSidenavOpen}>
+		<Container $open={layout.isSidenavOpen}>
 			<NavbarMobile position="relative" showCloseButton />
 			<Content>
 				<StyledUl>
@@ -29,7 +29,7 @@ function SideNavMenu() {
 	)
 }
 
-const Container = styled.aside<{ open: boolean }>`
+const Container = styled.aside<{ $open: boolean }>`
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -47,14 +47,14 @@ const Container = styled.aside<{ open: boolean }>`
 	z-index: 999;
 	
 	${props => {
-		if (props.open) {
+		if (props.$open) {
 			return css`width: 23.4rem;`
 		}
 	}}
 
 	${isDesktop} {
 		${props => {
-		if (props.open) {
+		if (props.$open) {
 			return css`
 				left:none;
 				right: 0;

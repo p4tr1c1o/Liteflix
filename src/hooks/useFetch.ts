@@ -1,30 +1,72 @@
-import { useEffect, useState } from "react"
+import { useEffect, useReducer, useRef } from 'react'
 
-export function useFetch<T>(url: string, converter?: (json) => T) {
-	const [data, setData] = useState<T | undefined>();
-	const [isLoading, setLoading] = useState(false);
-	const [error, setError] = useState<string | undefined>();
+interface State<T> {
+	data?: T
+	error?: Error
+}
+type Action<T> =
+	| { type: 'loading' }
+	| { type: 'fetched'; payload: T }
+	| { type: 'error'; payload: Error }
+
+export function useFetch<T = unknown>(
+	url?: string,
+	options?: RequestInit,
+	converter?: (json) => T
+): State<T> {
+	const cancelRequest = useRef<boolean>(false)
+	const initialState: State<T> = {
+		error: undefined,
+		data: undefined,
+	}
+
+	const fetchReducer = (state: State<T>, action: Action<T>): State<T> => {
+		switch (action.type) {
+			case 'loading':
+				return { ...initialState }
+			case 'fetched':
+				return { ...initialState, data: action.payload }
+			case 'error':
+				return { ...initialState, error: action.payload }
+			default:
+				return state
+		}
+	}
+
+	const [state, dispatch] = useReducer(fetchReducer, initialState)
 
 	useEffect(() => {
-		const fetchData = async () => {
-			setLoading(true);
-			try {
-				const response = await fetch(url)
+		if (!url) return
 
+		cancelRequest.current = false
+
+		const fetchData = async () => {
+			dispatch({ type: 'loading' })
+
+			try {
+				const response = await fetch(url, options)
 				if (!response.ok) throw new Error(response.statusText)
+
 				const json = await response.json() as T
 
-				setLoading(false)
-				converter ? setData(converter(json)) : setData(json)
-				setError(undefined)
+				const data = converter ? converter(json) : json
+				if (cancelRequest.current) return
 
+				dispatch({ type: 'fetched', payload: data })
 			} catch (error) {
-				setError((error as Error).message)
-				setLoading(false)
-			}
-		};
-		void fetchData()
-	}, [url, converter]);
+				if (cancelRequest.current) return
 
-	return { data, isLoading, error };
+				dispatch({ type: 'error', payload: error as Error })
+			}
+		}
+
+		void fetchData()
+
+		return () => {
+			cancelRequest.current = true
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [url])
+
+	return state
 }

@@ -3,15 +3,15 @@ import { styled } from "styled-components"
 import CardPelicula from "./CardPelicula"
 import SelectTipoListado from "./SelectTipoListado"
 import { isDesktop } from "../../styles/Theme"
-import { useFetch } from "../../hooks/useFetch"
 import Pelicula, { mapPeliculasPopulares } from "../../models/Pelicula"
 import { useState } from "react"
+import { useFetch } from "../../hooks/useFetch"
 
 
 function SectionListado() {
 	const urlPopulares = "https://api.themoviedb.org/3/movie/popular?api_key=6f26fd536dd6192ec8a57e94141f8b20"
 	const urlMisPeliculas = "https://us-central1-liteflix-7359f.cloudfunctions.net/api/peliculas"
-	const { data: peliculasPopulares } = useFetch<Pelicula[]>(urlPopulares, mapPeliculasPopulares)
+	const { data: peliculasPopulares } = useFetch<Pelicula[]>(urlPopulares, undefined, mapPeliculasPopulares)
 	const { data: misPeliculas } = useFetch<Pelicula[]>(urlMisPeliculas)
 	const [tipoListado, setTipoListado] = useState("Populares")
 

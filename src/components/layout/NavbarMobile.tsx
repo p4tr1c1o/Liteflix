@@ -17,7 +17,7 @@ function NavbarMobile({ showCloseButton, position }: Props) {
 
 
 	return (
-		<Navbar position={position}>
+		<Navbar $position={position}>
 			{
 				showCloseButton
 					? <CerrarIcon onClick={layout.toggleSidenav} />
@@ -30,9 +30,9 @@ function NavbarMobile({ showCloseButton, position }: Props) {
 	)
 }
 
-const Navbar = styled.nav<{ position: "fixed" | "relative" }>`
+const Navbar = styled.nav<{ $position: "fixed" | "relative" }>`
 	display: flex;
-	position: ${props => props.position.toString()};
+	position: ${props => props.$position.toString()};
 	top: 0;
 	width:100%;
 	align-items:center;

@@ -6,11 +6,9 @@ import { useFormik } from "formik";
 import * as Yup from 'yup';
 import { useFileUpload } from "../../hooks/useFileUpload";
 import styled from "styled-components";
-// import { usePost } from "../../hooks/usePost";
 
 function FormNuevaPelicula() {
 	const { uploadFile, isLoading, progress, error, downloadURL, cancelUpload } = useFileUpload()
-	// const { isSubmiting, handlePost } = usePost()
 	const validation = Yup.object({
 		title: Yup.string().min(1, "El titulo debe tener almenos 1 caracter").required("El titulo es obligatorio"),
 	})
@@ -25,16 +23,14 @@ function FormNuevaPelicula() {
 
 	async function handleSubmit(formValues: { title: string }) {
 		const data = { title: formValues.title, backdrop_path: downloadURL, }
-
-		alert(JSON.stringify(data, null, 2));
 		const result = await fetch("https://us-central1-liteflix-7359f.cloudfunctions.net/api/peliculas",
 			{
 				method: "POST",
-				body: JSON.stringify(data),
 				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(data),
 			})
 
-		// console.log(await result.json());
+		console.log(await result.json());
 	}
 
 	return (

@@ -17,9 +17,10 @@ function CardPelicula({ pelicula }: Props) {
 		position: absolute;
 		top: 0;
 		z-index: -1;
+
+		animation: fadeIn ease 3s;
+		animation-iteration-count: 1;
 	`
-
-
 	return (
 		<Container>
 			<ImagenPelicula />

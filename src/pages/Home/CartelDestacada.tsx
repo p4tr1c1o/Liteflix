@@ -23,11 +23,27 @@ function CartelDestacada() {
 	   background-position: center;
 	   z-index: -100;
 
-		   
 	   ${isDesktop} {
 		   position: fixed;
 		   height: 100%;
 	   }
+
+	   	animation: zoomOut ease 4s;
+ 	    animation-iteration-count: 1;
+		
+		@keyframes zoomOut {
+			0% {
+				opacity: 0.3;
+				transition: transform 1s, filter 2s ease-in-out;
+				filter: blur(2px);
+				transform: scale(1.1);			
+			}
+			100% {
+				opacity: 1;
+				filter: blur(0);
+  				transform: scale(1);			
+			}
+		}
    `
 
 	return (
