@@ -9,9 +9,14 @@ function RightDialog() {
 	if (!layout) throw new Error("undefined layout context");
 
 	return (
+
 		<Container $open={layout.isDialogOpen}>
-			<NavbarMobile position="relative" />
-			<DialogContent />
+			{layout.isDialogOpen && (
+				<>
+					<NavbarMobile position="relative" isDialog />
+					<DialogContent />
+				</>
+			)}
 		</Container>
 	)
 }

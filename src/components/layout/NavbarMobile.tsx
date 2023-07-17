@@ -6,12 +6,14 @@ import { layoutContext } from "../../contexts/SidenavProvider";
 import LogoLiteflix from "../LogoLiteflix";
 import AvatarCuenta from "../AvatarCuenta";
 
+
 type Props = {
 	position: "fixed" | "relative",
 	showCloseButton?: boolean,
+	isDialog?: boolean
 }
 
-function NavbarMobile({ showCloseButton, position }: Props) {
+function NavbarMobile({ showCloseButton, position, isDialog }: Props) {
 	const layout = useContext(layoutContext)
 	if (!layout) throw new Error("Missing sidenav context");
 
@@ -21,7 +23,7 @@ function NavbarMobile({ showCloseButton, position }: Props) {
 			{
 				showCloseButton
 					? <CerrarIcon onClick={layout.toggleSidenav} />
-					: <MenuIcon onClick={layout.toggleSidenav} />
+					: <MenuIcon onClick={(isDialog) ? layout.toggleDialog : layout.toggleSidenav} />
 			}
 			<LogoLiteflix />
 

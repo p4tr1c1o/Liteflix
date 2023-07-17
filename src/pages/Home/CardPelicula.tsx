@@ -1,15 +1,15 @@
 
-import { css, styled } from "styled-components"
+import { styled } from "styled-components"
 import BotonIconoPlay from "../../components/BotonIconoPlay"
 import { isDesktop } from "../../styles/Theme"
 import Pelicula from "../../models/Pelicula"
 
 type Props = {
 	pelicula: Pelicula,
-	fromFirestore?: boolean
 }
 
-function CardPelicula({ pelicula, fromFirestore }: Props) {
+function CardPelicula({ pelicula }: Props) {
+	const fromFirestore = pelicula.backdrop_path.startsWith("https://firebasestorage.")
 	const srcPelicula = fromFirestore
 		? pelicula.backdrop_path
 		: `https://image.tmdb.org/t/p/w300${pelicula.backdrop_path}`

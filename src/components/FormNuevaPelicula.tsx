@@ -71,7 +71,7 @@ function FormNuevaPelicula({ handleOk }: Props) {
 			{(formik.errors.title && Boolean(formik.submitCount)) && <LabelError>{formik.errors.title}</LabelError>}
 			<ButtonContainer>
 
-				<BotonPrimario disabled={!downloadURL} onClick={() => formik.handleSubmit()}> SUBIR PELICULA </BotonPrimario>
+				<BotonPrimario type="button" disabled={!downloadURL} onClick={() => formik.handleSubmit()}> SUBIR PELICULA </BotonPrimario>
 				{showSalir && <BotonOutline onClick={() => layout.toggleDialog()} > salir</BotonOutline>}
 			</ButtonContainer>
 		</>

@@ -45,8 +45,6 @@ export function useFileUpload() {
 				},
 				() => {
 					getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-						console.log(downloadURL);
-
 						setState({ ...state, downloadURL, isUploading: false })
 					}).catch(error => console.log(error))
 				}

@@ -36,7 +36,6 @@ function Droplet({ handleFile }: Props) {
 		inputRef.current?.click()
 	}
 
-	console.log(isDesktop);
 
 
 	return (

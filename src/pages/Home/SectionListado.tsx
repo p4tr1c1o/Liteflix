@@ -9,23 +9,23 @@ import { useFetch } from "../../hooks/useFetch"
 
 
 function SectionListado() {
+	const [tipoListado, setTipoListado] = useState<"Populares" | "MisPeliculas">("Populares")
 	const urlPopulares = "https://api.themoviedb.org/3/movie/popular?api_key=6f26fd536dd6192ec8a57e94141f8b20"
 	const urlMisPeliculas = "https://us-central1-liteflix-7359f.cloudfunctions.net/api/peliculas"
-	const { data: peliculasPopulares } = useFetch<Pelicula[]>(urlPopulares, undefined, mapPeliculasPopulares)
-	const { data: misPeliculas } = useFetch<Pelicula[]>(urlMisPeliculas)
-	const [tipoListado, setTipoListado] = useState("Populares")
+	const url = tipoListado == "Populares" ? urlPopulares : urlMisPeliculas
+	const converter = tipoListado == "Populares" ? mapPeliculasPopulares : undefined
+
+
+	const { data: peliculas } = useFetch<Pelicula[]>(url, undefined, converter)
 
 	return (
 		<Container>
 			<SelectTipoListado setValue={setTipoListado} />
 
-			{tipoListado == "Populares" && peliculasPopulares?.map((peli, index) =>
+			{peliculas?.map((peli, index) =>
 				<CardPelicula key={index + 1} pelicula={peli} />
 			)}
 
-			{tipoListado == "MisPeliculas" && misPeliculas?.map((peli, index) =>
-				<CardPelicula key={index + 1} pelicula={peli} fromFirestore />
-			)}
 		</Container >
 	)
 }

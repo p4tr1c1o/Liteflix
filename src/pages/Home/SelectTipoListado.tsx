@@ -10,7 +10,6 @@ type Props = {
 function SelectTipoListado({ setValue }: Props) {
 
 	function handleChange(event: ChangeEvent<HTMLSelectElement>) {
-		console.log("change", event.target.value);
 		setValue(event.target.value)
 	}
 

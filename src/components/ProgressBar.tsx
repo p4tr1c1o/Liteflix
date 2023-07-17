@@ -15,7 +15,6 @@ function ProgressBar({ progress, error, onCancel }: Props) {
 		return
 	}
 	function hancleCancelClick() {
-		console.log("cancel");
 		if (onCancel) onCancel()
 		return
 	}
@@ -30,7 +29,7 @@ function ProgressBar({ progress, error, onCancel }: Props) {
 		<Container>
 			<LabelProgreso>CARGANDO {progress}%</LabelProgreso>
 			<LineaGris>
-				<StyledProgressBar progress={progress} />
+				<StyledProgressBar $progress={progress} />
 			</LineaGris>
 			<BotonDinamico />
 		</Container>
@@ -72,11 +71,11 @@ const LineaGris = styled.div`
 	width: 100%;
 `
 
-const StyledProgressBar = styled.div<{ progress?: number }>`
+const StyledProgressBar = styled.div<{ $progress?: number }>`
 	background-color: ${({ theme }) => theme.colors.primary};
 	margin-block: 1rem;
 	height: 0.65rem;
-	width: ${props => css`${props.progress}%` ?? 0};	
+	width: ${props => css`${props.$progress}%` ?? 0};	
 	transition-delay: 0.2; 
 	transition-duration: 0.8; 
 `
